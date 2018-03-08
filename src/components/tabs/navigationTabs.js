@@ -1,12 +1,13 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import SimpleMap from '../map/map';
 
 export default class NavigationTabs extends React.Component {
   render() {
     return (
       <Tabs className="tabs-container">
         <TabPanel className="tab-panel">
-          <h2>Any content 1</h2>
+          <SimpleMap />
         </TabPanel>
         <TabPanel className="tab-panel">
           <h2>Any content 2</h2>
@@ -20,16 +21,16 @@ export default class NavigationTabs extends React.Component {
 
         <TabList className="tabs-list">
           <Tab className="tab">
-            <i class="fas fa-home" />
+            <i className="fas fa-home" />
           </Tab>
           <Tab className="tab">
-            <i class="fas fa-eye" />
+            <i className="fas fa-eye" />
           </Tab>
           <Tab className="tab">
-            <i class="fas fa-tags" />
+            <i className="fas fa-tags" />
           </Tab>
           <Tab className="tab">
-            <i class="fas fa-chart-line" />
+            <i className="fas fa-chart-line" />
           </Tab>
         </TabList>
       </Tabs>
