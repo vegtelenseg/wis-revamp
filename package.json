@@ -7,8 +7,10 @@
     "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.1.1",
-    "react-tabs": "^2.2.1"
+    "react-tabs": "^2.2.1",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
@@ -20,11 +22,13 @@
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "prettier": "prettier --write --tab-width=4 --single-quote=true --print-width=100 \"src/**/*.{js,scss}\""
+    "prettier": "prettier --write --tab-width=2 --single-quote=true --print-width=100 \"src/**/*.{js,scss}\""
   },
   "devDependencies": {
     "node-sass": "^4.7.2",
     "node-sass-chokidar": "0.0.3",
-    "prettier": "^1.11.1"
+    "prettier": "^1.11.1",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6"
   }
 }

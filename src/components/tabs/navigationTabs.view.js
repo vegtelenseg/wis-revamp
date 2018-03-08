@@ -1,13 +1,15 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import SimpleMap from '../map/map';
+import Map from '../map/map.container';
+import Search from '../search/search.container';
 
 export default class NavigationTabs extends React.Component {
   render() {
     return (
       <Tabs className="tabs-container">
         <TabPanel className="tab-panel">
-          <SimpleMap />
+          <Search />
+          <Map />
         </TabPanel>
         <TabPanel className="tab-panel">
           <h2>Any content 2</h2>

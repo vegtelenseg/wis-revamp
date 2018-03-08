@@ -1,32 +1,32 @@
 .tabs-container {
-    .tabs-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: red;
-        .tab {
-            border-right: 1px solid;
-            border-top: 1px solid;
-            border-color: rgba(black, 0.43);
-            text-align: center;
-            position: relative;
-            list-style: none;
-            padding: 1.4em 0;
-            svg {
-                font-size: 1.8em;
-                box-sizing: border-box;
-            }
-        }
-        li:nth-child(4) {
-            border-right: none;
-        }
+  .tabs-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    .tab {
+      border-right: 1px solid;
+      border-top: 1px solid;
+      border-color: rgba(black, 0.43);
+      text-align: center;
+      position: relative;
+      list-style: none;
+      padding: 1.4em 0;
+      svg {
+        font-size: 1.8em;
+        box-sizing: border-box;
+      }
     }
-    .tab-panel {
-        img {
-            width: 100%;
-            height: max-content;
-        }
+    li:nth-child(4) {
+      border-right: none;
     }
+  }
+  .tab-panel {
+    img {
+      width: 100%;
+      height: max-content;
+    }
+  }
 }
