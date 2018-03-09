@@ -1,5 +1,4 @@
 import React from 'react';
-import map from 'lodash';
 
 export default class Product extends React.Component {
   render() {
