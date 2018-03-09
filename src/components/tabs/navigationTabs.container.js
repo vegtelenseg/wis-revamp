@@ -10,8 +10,11 @@ const mapStateToProps = ({ navigationTabsReducer }) => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-    ...actions
-  });
+  bindActionCreators(
+    {
+      ...actions
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavigationTabs);

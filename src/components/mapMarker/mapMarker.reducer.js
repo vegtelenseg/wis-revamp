@@ -1,18 +1,12 @@
 const initialState = {
-  item: {
-    name: '',
-    manufacturer: '',
-    bestBefore: new Date(),
-    checkoutRate: Math.floor(Math.random()),
-    inStock: Math.ceil(Math.random())
-  }
+  product: {}
 };
 
 const actionTypes = {
   SET_ITEM_INFO: 'SET_ITEM_INFO'
 };
 
-export const actions = {
+export const mapMarkerActions = {
   watchItem: function(item) {
     return;
   }

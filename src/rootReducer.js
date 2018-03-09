@@ -5,6 +5,6 @@ import mapMarkerReducer from './components/mapMarker/mapMarker.reducer';
 
 export default combineReducers({
   searchReducer,
-	mapReducer,
-	mapMarkerReducer
+  mapReducer,
+  mapMarkerReducer
 });

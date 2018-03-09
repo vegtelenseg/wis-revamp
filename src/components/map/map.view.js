@@ -8,7 +8,6 @@ export default class Map extends Component {
     height: '100vh'
   };
   render() {
-    console.log("cUL: ", this.props.currenUsertLocation);
     return (
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyCKrI3dCD16cWj43TZcHUSalpLEc48nHPw' }}
@@ -16,8 +15,10 @@ export default class Map extends Component {
         defaultZoom={this.props.zoom}
         style={this.styles}
       >
-        <MapMarker {...this.props.currenUsertLocation} />
+        {this.renderMarkers(this.props.foundItems)}
       </GoogleMapReact>
     );
   }
+  renderMarkers = foundItems =>
+    foundItems.map((item, idx) => <MapMarker key={idx + Math.random()} lat={item.lat} lng={item.lng} item={item} />);
 }

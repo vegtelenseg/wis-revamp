@@ -22,9 +22,16 @@
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
     "prettier": "prettier --write --tab-width=2 --single-quote=true --print-width=100 \"src/**/*.{js,scss}\""
   },
   "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
     "node-sass": "^4.7.2",
     "node-sass-chokidar": "0.0.3",
     "prettier": "^1.11.1",

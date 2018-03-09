@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions } from './map.reducer';
+import { mapActions } from './map.reducer';
 import Map from './map.view';
 
-const mapStateToProps = ({ mapReducer }) => ({
-  ...mapReducer
+const mapStateToProps = ({ mapReducer, searchReducer }) => ({
+  ...mapReducer,
+  ...searchReducer
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
-    ...actions
+    ...mapActions
   });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

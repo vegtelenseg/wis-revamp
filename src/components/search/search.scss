@@ -1,0 +1,15 @@
+.search-container {
+  position: absolute;
+  z-index: 9999;
+  top: 3em;
+  left: 50%;
+  width: 75%;
+  transform: translateX(-50%);
+  #search-input {
+    outline: none;
+    height: 2.6em;
+    width: 100%;
+    padding: 0 1em;
+    box-sizing: border-box;
+  }
+}
