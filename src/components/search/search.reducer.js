@@ -34,8 +34,8 @@ export const searchActions = {
           bestBefore: '9/11/19',
           checkoutRate: 7,
           inStock: 72,
-          lng: 28.05574,
-          lat: -26.107786,
+          lng: 28.10574,
+          lat: -26.157786,
           price: 25,
           productBrand: 'TigerBrand',
           productName: 'bread'

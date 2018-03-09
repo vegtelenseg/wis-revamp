@@ -1,16 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Product extends React.Component {
-  render() {
-    const { item } = this.props;
-    return (
-      <div>
-        <ul>{this.renderItemDetails(item)}</ul>
-      </div>
-    );
-  }
-  renderItemDetails = item =>
-		Object.keys(item).map(itemKey => {
-      return <li key={Math.random()}>{item[itemKey]}</li>;
-    });
-}
+const Product = ({ item }) => {
+  return (
+    <div>
+      <ul className="product-items-container">{renderItemDetails(item)}</ul>
+    </div>
+  );
+};
+
+const renderItemDetails = item =>
+  Object.keys(item).map(itemKey => {
+    return <li key={Math.random()}>{item[itemKey]}</li>;
+  });
+
+export default Product;
+Product.propTypes = {
+  item: PropTypes.object.isRequired
+};

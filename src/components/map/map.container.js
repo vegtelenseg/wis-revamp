@@ -5,7 +5,7 @@ import Map from './map.view';
 
 const mapStateToProps = ({ mapReducer, searchReducer }) => ({
   ...mapReducer,
-  ...searchReducer
+  foundItems: searchReducer.foundItems
 });
 
 const mapDispatchToProps = dispatch =>
