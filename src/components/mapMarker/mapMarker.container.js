@@ -4,9 +4,8 @@ import { bindActionCreators } from 'redux';
 import { mapMarkerActions } from './mapMarker.reducer';
 import MapMarker from './mapMarker.view';
 
-const mapStateToProps = ({ mapReducer, searchReducer }) => ({
-  ...mapReducer,
-  ...searchReducer
+const mapStateToProps = ({ mapReducer }) => ({
+  ...mapReducer
 });
 
 const mapDispatchToProps = dispatch =>

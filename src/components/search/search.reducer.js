@@ -21,14 +21,34 @@ export const searchActions = {
       type: searchActionTypes.FETCH_ITEMS,
       payload: [
         {
-          name: 'Siya',
-          lat: -26.107567,
-          lng: 28.056702
+          bestBefore: '8/12/18',
+          checkoutRate: 6,
+          inStock: 14,
+          lng: 28.05474,
+          lat: -26.107686,
+          price: 15,
+          productBrand: 'Lads',
+          productName: 'bread'
         },
         {
-          name: 'Mo',
-          lat: -26.127567,
-          lng: 28.076702
+          bestBefore: '9/11/19',
+          checkoutRate: 7,
+          inStock: 72,
+          lng: 28.05574,
+          lat: -26.107786,
+          price: 25,
+          productBrand: 'TigerBrand',
+          productName: 'bread'
+        },
+        {
+          bestBefore: '16/01/20',
+          checkoutRate: 10,
+          inStock: 27,
+          lng: 28.08574,
+          lat: -26.127786,
+          price: 30,
+          productBrand: 'TigerBrand',
+          productName: 'bread'
         }
       ]
     };

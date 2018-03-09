@@ -20,5 +20,7 @@ export default class Map extends Component {
     );
   }
   renderMarkers = foundItems =>
-    foundItems.map((item, idx) => <MapMarker key={idx + Math.random()} lat={item.lat} lng={item.lng} item={item} />);
+    foundItems.map((item, idx) => (
+      <MapMarker key={idx + Math.random()} lat={item.lat} lng={item.lng} item={item} />
+    ));
 }
