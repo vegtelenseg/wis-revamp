@@ -1,3 +1,4 @@
+import createAction from '../../helpers/actionCreator';
 const initialState = {
   isVisible: false
 };
@@ -7,15 +8,7 @@ const mapMarkerActionTypes = {
 };
 
 export const mapMarkerActions = {
-  watchItem: function(item) {
-    return;
-  },
-  showItemInfo: function(predicate) {
-    return {
-      type: mapMarkerActionTypes.SHOW_ITEM_INFO,
-      payload: predicate
-    };
-  }
+  showItemInfo: predicate => createAction(mapMarkerActionTypes.SHOW_ITEM_INFO, predicate)
 };
 
 export default function mapMarkerReducer(state = initialState, action) {

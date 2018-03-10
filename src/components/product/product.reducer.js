@@ -1,3 +1,5 @@
+import createAction from '../../helpers/actionCreator';
+
 const initialState = {
   name: '',
   manufacturer: '',
@@ -12,22 +14,8 @@ const productActionTypes = {
 };
 
 export const productActions = {
-  setItemCheckoutRate: function(itemId) {
-    // Find product from DB and return its new check-out rate here
-    const newItemCheckoutRate = 10;
-    return {
-      type: productActionTypes.SET_ITEM_CHECKOUT_RATE,
-      payload: newItemCheckoutRate
-    };
-  },
-  setItemsInStock: function(itemId) {
-    // Find product from DB and return its new check-out rate here
-    const itemsInStock = 100;
-    return {
-      type: productActionTypes.SET_ITEMS_IN_STOCK,
-      payload: itemsInStock
-    };
-  }
+  setItemCheckoutRate: itemId => createAction(productActionTypes.SET_ITEM_CHECKOUT_RATE, 20),
+  setItemsInStock: itemId => createAction(productActionTypes.SET_ITEMS_IN_STOCK, 12)
 };
 
 export default function productReducer(state = initialState, action) {
