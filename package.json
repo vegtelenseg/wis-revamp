@@ -21,7 +21,7 @@
     "build": "npm-run-all build-css build-js",
     "start-js": "react-scripts start",
     "build-js": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage",
+    "test": "react-scripts test --env=jsdom",
     "test-ci": "CI=true react-scripts test --env=jsdom --ci",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
