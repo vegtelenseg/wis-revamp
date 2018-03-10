@@ -1,3 +1,5 @@
+import createAction from '../../helpers/actionCreator';
+
 const initialState = {
   currenUsertLocation: {
     lat: -26.065547,
@@ -15,12 +17,7 @@ const mapActionTypes = {
 
 export const mapActions = {
   setMapCurrentLocation: function(coords) {},
-  setMapMarkers: function(markersInfo) {
-    return {
-      type: mapActionTypes.SET_MARKERS,
-      payload: markersInfo
-    };
-  }
+  setMapMarkers: markersInfo => createAction(mapActionTypes.SET_MARKERS, markersInfo)
 };
 
 export default function mapReducer(state = initialState, action) {
