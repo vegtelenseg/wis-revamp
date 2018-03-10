@@ -4,7 +4,7 @@ import NavigationTabs from '../tabs/navigationTabs.container';
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <NavigationTabs />
       </div>
     );
