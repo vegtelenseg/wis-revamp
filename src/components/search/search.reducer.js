@@ -1,4 +1,5 @@
-import axios from 'axios';
+import createAction from '../../helpers/actionCreator';
+import { getProductByName } from '../../services/services';
 
 const initialState = {
   searchQuery: '',
@@ -13,18 +14,9 @@ const searchActionTypes = {
 };
 
 export const searchActions = {
-  setItemName: name => ({
-    type: searchActionTypes.SET_ITEM_NAME,
-    payload: name
-  }),
-  isFetching: predicate => ({
-    type: searchActionTypes.IS_FETCHING,
-    payload: predicate
-  }),
-  foundProduct: product => ({
-    type: searchActionTypes.FOUND_ITEMS,
-    payload: product
-  })
+  setItemName: name => createAction(searchActionTypes.SET_ITEM_NAME, name),
+  isFetching: predicate => createAction(searchActionTypes.IS_FETCHING, predicate),
+  foundProduct: product => createAction(searchActionTypes.FOUND_ITEMS, product)
 };
 
 export const fetchItemsThunk = name => (dispatch, getState) => {
@@ -33,14 +25,6 @@ export const fetchItemsThunk = name => (dispatch, getState) => {
     getProductByName(name).then(product => dispatch(searchActions.foundProduct(product)));
   }
 };
-
-const getProductByName = name =>
-  axios
-    .get('./mock-data/products.json')
-    .then(products => products.data)
-    .catch(err => {
-      console.error('Could not retrieve products: ', err);
-    });
 
 export default function searchReducer(state = initialState, action) {
   switch (action.type) {
