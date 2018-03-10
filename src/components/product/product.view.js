@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Product = ({ item }) => {
+const Product = ({ item, isVisible }) => {
   return (
     <div>
-      <ul className="product-items-container">{renderItemDetails(item)}</ul>
+      <ul
+        className={isVisible ? 'product-items-container show-item-info' : 'product-items-container'}
+      >
+        {renderItemDetails(item)}
+      </ul>
     </div>
   );
 };

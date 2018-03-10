@@ -4,15 +4,18 @@ import PropType from 'prop-types';
 import Product from '../product/product.container';
 
 export default class MapMarker extends React.Component {
-  openItemDetails = e => {
-    alert('Hey');
-  };
   render() {
+    const { isVisible } = this.props;
+    console.log('Props', isVisible);
     return (
       <div>
-        <div className="pin" />
+        <div className="pin" onTouchStart={() => this.props.showItemInfo(this.props.isVisible)} />
         <div className="pulse" />
-        {this.props.item ? <Product item={this.props.item} /> : <div>Render Nothing</div>}
+        {this.props.item ? (
+          <Product isVisible={this.props.isVisible} item={this.props.item} />
+        ) : (
+          <div>Render Nothing</div>
+        )}
       </div>
     );
   }
