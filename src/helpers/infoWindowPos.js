@@ -17,7 +17,10 @@ export function getHintBaloonHorizontalPosStyle(x, markerWidth, markerOffset, ma
   const leftX = x + offset - markerWidth * markerOffset;
   const rightX = leftX + K_BALLOON_WIDTH;
   // recalc if overflow
-  const mapOffset = offset + Math.min(0, (mapWidth - K_BALLOON_MAP_OFFSET) - rightX) + Math.max(0, K_BALLOON_MAP_OFFSET - leftX);
+  const mapOffset =
+    offset +
+    Math.min(0, mapWidth - K_BALLOON_MAP_OFFSET - rightX) +
+    Math.max(0, K_BALLOON_MAP_OFFSET - leftX);
 
   const K_BALLOON_WIDTH_STYLE = {
     width: `${K_BALLOON_WIDTH}px`,
@@ -29,10 +32,14 @@ export function getHintBaloonHorizontalPosStyle(x, markerWidth, markerOffset, ma
 
 export function getHintBottomOffsetClass(markerWidth, markerOffset) {
   const K_HINT_ARROW_WIDTH = 12;
-  const offset = Math.round(-(markerWidth / 2 + K_HINT_ARROW_WIDTH / 2 - markerOffset * markerWidth));
+  const offset = Math.round(
+    -(markerWidth / 2 + K_HINT_ARROW_WIDTH / 2 - markerOffset * markerWidth)
+  );
   if (__DEV__) {
     if (offset < -40 || offset > 40) {
-      console.error('HintBottomOffset is out of range, extend range at sass/markers/map_marker.sass'); // eslint-disable-line no-console
+      console.error(
+        'HintBottomOffset is out of range, extend range at sass/markers/map_marker.sass'
+      ); // eslint-disable-line no-console
     }
   }
   // classes generated at sass/markers/map_marker.sass

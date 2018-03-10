@@ -1,12 +1,15 @@
+import axios from 'axios';
+
 const initialState = {
-  searchQuery: 'Bread',
+  searchQuery: '',
   isFetchingItems: false,
   foundItems: []
 };
 
 const searchActionTypes = {
   SET_ITEM_NAME: 'SET_ITEM_NAME',
-  FETCH_ITEMS: 'FETCH_ITEMS'
+  IS_FETCHING: 'IS_FETCHING',
+  FOUND_ITEMS: 'FOUND_ITEMS'
 };
 
 export const searchActions = {
@@ -16,58 +19,49 @@ export const searchActions = {
       payload: name
     };
   },
-  fetchItems: function(name) {
+  isFetching: function(predicate) {
     return {
-      type: searchActionTypes.FETCH_ITEMS,
-      payload: [
-        {
-          bestBefore: '8/12/18',
-          checkoutRate: 6,
-          inStock: 14,
-          lng: 28.05474,
-          lat: -26.107686,
-          price: 15,
-          productBrand: 'Lads',
-          productName: 'bread'
-        },
-        {
-          bestBefore: '9/11/19',
-          checkoutRate: 7,
-          inStock: 72,
-          lng: 28.10574,
-          lat: -26.157786,
-          price: 25,
-          productBrand: 'TigerBrand',
-          productName: 'bread'
-        },
-        {
-          bestBefore: '16/01/20',
-          checkoutRate: 10,
-          inStock: 27,
-          lng: 28.08574,
-          lat: -26.127786,
-          price: 30,
-          productBrand: 'TigerBrand',
-          productName: 'bread'
-        }
-      ]
+      type: searchActionTypes.IS_FETCHING,
+      payload: predicate
     };
+  },
+  foundProduct: product => ({
+    type: searchActionTypes.FOUND_ITEMS,
+    payload: product
+  })
+};
+
+export const fetchItemsThunk = name => (dispatch, getState) => {
+  if (!getState().isFetching) {
+    dispatch(searchActions.isFetching(true));
+    getProductByName(name).then(product => dispatch(searchActions.foundProduct(product)));
   }
 };
 
+const getProductByName = name =>
+  axios
+    .get('./mock-data/products.json')
+    .then(products => products.data)
+    .catch(err => {
+      console.error('Could not retrieve products: ', err);
+    });
+
 export default function searchReducer(state = initialState, action) {
   switch (action.type) {
-    case searchActionTypes.FETCH_ITEMS:
-      return {
-        ...state,
-        isFetchingItems: false,
-        foundItems: action.payload
-      };
     case searchActionTypes.SET_ITEM_NAME:
       return {
         ...state,
-        searchQuery: action.payload,
-        isFetchingItems: true
+        searchQuery: action.payload
+      };
+    case searchActionTypes.IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.payload
+      };
+    case searchActionTypes.FOUND_ITEMS:
+      return {
+        ...state,
+        foundItems: action.payload
       };
     default:
       return state;

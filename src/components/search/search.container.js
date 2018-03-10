@@ -1,5 +1,5 @@
 import { bindActionCreators } from 'redux';
-import { searchActions } from './search.reducer';
+import { searchActions, fetchItemsThunk } from './search.reducer';
 import { connect } from 'react-redux';
 import Search from './search.view';
 
@@ -10,7 +10,8 @@ const mapStateProps = ({ searchReducer }) => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      ...searchActions
+      ...searchActions,
+      fetchItemsThunk
     },
     dispatch
   );
