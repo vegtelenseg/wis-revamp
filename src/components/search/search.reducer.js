@@ -14,12 +14,12 @@ const searchActionTypes = {
 
 export const searchActions = {
   setItemName: name => ({
-      type: searchActionTypes.SET_ITEM_NAME,
-      payload: name
+    type: searchActionTypes.SET_ITEM_NAME,
+    payload: name
   }),
   isFetching: predicate => ({
-      type: searchActionTypes.IS_FETCHING,
-      payload: predicate
+    type: searchActionTypes.IS_FETCHING,
+    payload: predicate
   }),
   foundProduct: product => ({
     type: searchActionTypes.FOUND_ITEMS,
@@ -57,7 +57,8 @@ export default function searchReducer(state = initialState, action) {
     case searchActionTypes.FOUND_ITEMS:
       return {
         ...state,
-        foundItems: action.payload
+        foundItems: action.payload,
+        isFetchingItems: false
       };
     default:
       return state;
