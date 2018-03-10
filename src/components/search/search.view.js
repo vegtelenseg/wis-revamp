@@ -6,7 +6,7 @@ export default class Search extends React.Component {
   isEnter = e => {
     if (e.key === 'Enter' && e.target.value.length > 0) {
       this.props.setItemName(e.target.value);
-      this.props.fetchItems(this.props.searchQuery);
+      this.props.fetchItemsThunk(this.props.searchQuery);
     }
     return;
   };
@@ -22,5 +22,5 @@ export default class Search extends React.Component {
 Search.propTypes = {
   value: PropTypes.string,
   setItemName: PropTypes.func.isRequired,
-  fetchItems: PropTypes.func.isRequired
+  fetchItemsThunk: PropTypes.func.isRequired
 };
