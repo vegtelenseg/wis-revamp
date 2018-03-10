@@ -5,6 +5,7 @@ import Search from '../search/search.container';
 
 export default class NavigationTabs extends React.Component {
   render() {
+		console.log("Nav tabs: ", this.props);
     return (
       <Tabs className="tabs-container">
         <TabPanel className="tab-panel">
@@ -22,7 +23,7 @@ export default class NavigationTabs extends React.Component {
         </TabPanel>
 
         <TabList className="tabs-list">
-          <Tab className="tab">
+          <Tab className="tab" onClick={e => console.log("Clicked", e.target)}>
             <i className="fas fa-home" />
           </Tab>
           <Tab className="tab">
