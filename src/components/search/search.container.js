@@ -1,6 +1,11 @@
-import { bindActionCreators } from 'redux';
-import { searchActions, fetchItemsThunk } from './search.reducer';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { searchActions, fetchItemsThunk } from './search.reducer';
+import { fetchExploreItemsThunk } from '../tabs/explore/explore.reducer';
+import { fetchWatchedItemsThunk } from '../tabs/watched/watched.reducer';
+import { fetchDiscountsItemsThunk } from '../tabs/discounts/discounts.reducer';
+
 import Search from './search.view';
 
 const mapStateProps = ({ searchReducer }) => ({
@@ -11,7 +16,10 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       ...searchActions,
-      fetchItemsThunk
+      fetchItemsThunk,
+      fetchExploreItemsThunk,
+      fetchWatchedItemsThunk,
+      fetchDiscountsItemsThunk
     },
     dispatch
   );

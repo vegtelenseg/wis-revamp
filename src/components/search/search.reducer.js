@@ -1,46 +1,30 @@
 import createAction from '../../helpers/actionCreator';
-import { getProductByNameFromDB, getProductByNameFromList } from '../../services/services';
 
 const initialState = {
   searchQuery: '',
-  isFetchingItems: false,
-  foundItems: []
+  isFetchingItems: false
 };
 
 const searchActionTypes = {
   SET_ITEM_NAME: 'SET_ITEM_NAME',
-  SET_IS_FETCHING: 'SET_IS_FETCHING',
-  SET_FOUND_ITEMS: 'SET_FOUND_ITEMS',
-  SET_WATCHED_PRODUCTS: 'SET_WATCHED_PRODUCTS',
-  SET_DISCOUNTS: 'SET_DISCOUNTS'
+  SET_IS_FETCHING: 'SET_IS_FETCHING'
 };
 
 export const searchActions = {
   setItemName: name => createAction(searchActionTypes.SET_ITEM_NAME, name),
-  setIsFetching: predicate => createAction(searchActionTypes.SET_IS_FETCHING, predicate),
-  setFoundProduct: product => createAction(searchActionTypes.SET_FOUND_ITEMS, product),
-  setWatchedProducts: products => createAction(searchActionTypes.SET_WATCHED_PRODUCTS, products),
-  setDiscounts: discounts => createAction(searchActionTypes.SET_DISCOUNTS, discounts)
+  setIsFetching: predicate => createAction(searchActionTypes.SET_IS_FETCHING, predicate)
 };
 
-export const fetchItemsThunk = (name, activeTab) => (dispatch, getState) => {
+export const fetchItemsThunk = (name, props) => (dispatch, getState) => {
   if (!getState().isFetchingItems) {
-    dispatch(searchActions.isFetching(true));
-    switch (activeTab) {
+    dispatch(searchActions.setIsFetching(true));
+    switch (props.activeTab) {
       case 'EXPLORE':
-        return getProductByNameFromDB(name).then(product =>
-          dispatch(searchActions.setFoundProduct(product))
-        );
+        return props.fetchExploreItemsThunk(name);
       case 'WATCHED':
-        return getProductByNameFromList(name).then(product =>
-          dispatch(searchActions.setWatchedProducts(product))
-        );
+        return props.fetchWatchedItemsThunk(name);
       case 'DISCOUNTS':
-        return getDiscountsByNameFromDB(name).then(discounts =>
-          dispatch(searchActions.setDiscounts(discounts))
-        );
-      case 'IMPROVEMENTS':
-        break;
+        return props.fetchDiscountsItemsThunk(name);
       default:
         break;
     }
@@ -59,22 +43,6 @@ export default function searchReducer(state = initialState, action) {
         ...state,
         isFetchingItems: action.payload
       };
-    case searchActionTypes.SET_FOUND_ITEMS:
-      return {
-        ...state,
-        foundItems: action.payload,
-        isFetchingItems: false
-			};
-		case searchActionTypes.SET_WATCHED_PRODUCTS:
-			return {
-				...state,
-				watchedProducts: action.payload
-			}
-			case searchActionTypes.SET_DISCOUNTS:
-				return {
-					...state,
-					discounts: action.payload
-				}
     default:
       return state;
   }
