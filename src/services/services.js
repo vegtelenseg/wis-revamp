@@ -12,12 +12,4 @@ export const getProductByNameFromDB = name =>
 export const getProductByNameFromList = (name, list) => list.filter(item => item !== name);
 
 export const getDiscountsByNameFromDB = name =>
-  new Promise((resolve, reject) => {
-    try {
-      //Get information from the DB
-      getProductByNameFromDB(name).then(data => resolve(data));
-    } catch (error) {
-      console.error('Error retrieving product');
-      reject(error);
-    }
-  });
+  getProductByNameFromDB(name).then(product => product.data);
