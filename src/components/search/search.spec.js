@@ -19,12 +19,12 @@ describe('Search Reducer Tests', () => {
   });
 
   it('should set isFetching to true', () => {
-    const newState = searchReducer(initialState, searchActions.isFetching(true));
+    const newState = searchReducer(initialState, searchActions.setIsFetching(true));
     expect(newState.isFetchingItems).toEqual(true);
   });
 
   it('should set found items to be mock data', () => {
-    const newState = searchReducer(initialState, searchActions.foundProduct(mockData));
+    const newState = searchReducer(initialState, searchActions.setFoundProduct(mockData));
     expect(newState.foundItems).toBe(mockData);
   });
 
