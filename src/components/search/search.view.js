@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 export default class Search extends React.Component {
   isEnter = e => {
+    const { activeTab } = this.props;
     if (e.key === 'Enter' && e.target.value.length > 0) {
       this.props.setItemName(e.target.value);
-      this.props.fetchItemsThunk(this.props.searchQuery);
+      this.props.fetchItemsThunk(this.props.searchQuery, activeTab);
     }
     return;
   };
@@ -22,5 +23,6 @@ export default class Search extends React.Component {
 Search.propTypes = {
   value: PropTypes.string,
   setItemName: PropTypes.func.isRequired,
-  fetchItemsThunk: PropTypes.func.isRequired
+  fetchItemsThunk: PropTypes.func.isRequired,
+  activeTab: PropTypes.string.isRequired
 };
