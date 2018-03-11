@@ -8,16 +8,18 @@ export default class NavigationTabs extends React.Component {
     return (
       <Tabs className="tabs-container">
         <TabPanel className="tab-panel">
-          <Search />
+          <Search activeTab="EXPLORE" />
           <Map />
         </TabPanel>
         <TabPanel className="tab-panel">
-          <h2>Any content 2</h2>
+          <Search activeTab="WATCHED" />
         </TabPanel>
         <TabPanel className="tab-panel">
+          <Search />
           <h2>Any content 3</h2>
         </TabPanel>
         <TabPanel className="tab-panel">
+          <Search />
           <h2>Any content 4</h2>
         </TabPanel>
 
