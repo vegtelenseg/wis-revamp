@@ -8,15 +8,15 @@ const initialState = {
 };
 
 const exploreActionTypes = {
-  SET_ITEM_NAME: 'SET_ITEM_NAME',
-  SET_IS_FETCHING: 'SET_IS_FETCHING',
-  SET_FOUND_ITEMS: 'SET_FOUND_ITEMS'
+  SET_EXPLORE_ITEM_NAME: 'SET_EXPLORE_ITEM_NAME',
+  SET_EXPLORE_IS_FETCHING: 'SET_EXPLORE_IS_FETCHING',
+  SET_EXPLORE_FOUND_ITEMS: 'SET_EXPLORE_FOUND_ITEMS'
 };
 
 export const exploreActions = {
-  setItemName: name => createAction(exploreActionTypes.SET_ITEM_NAME, name),
-  setIsFetching: predicate => createAction(exploreActionTypes.SET_IS_FETCHING, predicate),
-  setFoundProduct: product => createAction(exploreActionTypes.SET_FOUND_ITEMS, product)
+  setItemName: name => createAction(exploreActionTypes.SET_EXPLORE_ITEM_NAME, name),
+  setIsFetching: predicate => createAction(exploreActionTypes.SET_EXPLORE_IS_FETCHING, predicate),
+  setFoundProduct: product => createAction(exploreActionTypes.SET_EXPLORE_FOUND_ITEMS, product)
 };
 
 export const fetchExploreItemsThunk = name => (dispatch, getState) => {
@@ -30,17 +30,17 @@ export const fetchExploreItemsThunk = name => (dispatch, getState) => {
 
 export default function exploreReducer(state = initialState, action) {
   switch (action.type) {
-    case exploreActionTypes.SET_ITEM_NAME:
+    case exploreActionTypes.SET_EXPLORE_ITEM_NAME:
       return {
         ...state,
         searchQuery: action.payload
       };
-    case exploreActionTypes.SET_IS_FETCHING:
+    case exploreActionTypes.SET_EXPLORE_IS_FETCHING:
       return {
         ...state,
         isFetchingItems: action.payload
       };
-    case exploreActionTypes.SET_FOUND_ITEMS:
+    case exploreActionTypes.SET_EXPLORE_FOUND_ITEMS:
       return {
         ...state,
         foundItems: action.payload,

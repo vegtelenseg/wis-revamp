@@ -8,14 +8,14 @@ const initialState = {
 };
 
 const discountsActionTypes = {
-  SET_ITEM_NAME: 'SET_ITEM_NAME',
-  SET_IS_FETCHING: 'SET_IS_FETCHING',
-  SET_DISCOUNTS: 'SET_DISCOUNTS'
+  SET_DISCOUNTS_ITEM_NAME: 'SET_DISCOUNTS_ITEM_NAME',
+  SET_DISCOUNTS_IS_FETCHING: 'SET_DISCOUNTS_IS_FETCHING',
+  SET_DISCOUNTS_FOUND_ITEMS: 'SET_DISCOUNTS_FOUND_ITEMS'
 };
 
 export const discountsActions = {
-  setItemName: name => createAction(discountsActionTypes.SET_ITEM_NAME, name),
-  setIsFetching: predicate => createAction(discountsActionTypes.SET_IS_FETCHING, predicate),
+  setItemName: name => createAction(discountsActionTypes.SET_DISCOUNTS_ITEM_NAME, name),
+  setIsFetching: predicate => createAction(discountsActionTypes.SET_DISCOUNTS_IS_FETCHING, predicate),
   setDiscounts: discounts => createAction(discountsActionTypes.SET_DISCOUNTS, discounts)
 };
 
@@ -30,17 +30,17 @@ export const fetchDiscountsItemsThunk = (name, activeTab) => (dispatch, getState
 
 export default function discountsReducer(state = initialState, action) {
   switch (action.type) {
-    case discountsActionTypes.SET_ITEM_NAME:
+    case discountsActionTypes.SET_DISCOUNTS_ITEM_NAME:
       return {
         ...state,
         searchQuery: action.payload
       };
-    case discountsActionTypes.SET_IS_FETCHING:
+    case discountsActionTypes.SET_DISCOUNTS_IS_FETCHING:
       return {
         ...state,
         isFetchingItems: action.payload
       };
-    case discountsActionTypes.SET_DISCOUNTS:
+    case discountsActionTypes.SET_DISCOUNTS_FOUND_ITEMS:
       return {
         ...state,
         discounts: action.payload

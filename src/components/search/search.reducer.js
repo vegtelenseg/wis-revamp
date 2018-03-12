@@ -6,13 +6,13 @@ const initialState = {
 };
 
 const searchActionTypes = {
-  SET_ITEM_NAME: 'SET_ITEM_NAME',
-  SET_IS_FETCHING: 'SET_IS_FETCHING'
+  SET_SEARCH_ITEM_NAME: 'SET_SEARCH_ITEM_NAME',
+  SET_SEARCH_IS_FECTHING: 'SET_SEARCH_IS_FECTHING'
 };
 
 export const searchActions = {
-  setItemName: name => createAction(searchActionTypes.SET_ITEM_NAME, name),
-  setIsFetching: predicate => createAction(searchActionTypes.SET_IS_FETCHING, predicate)
+  setItemName: name => createAction(searchActionTypes.SET_SEARCH_ITEM_NAME, name),
+  setIsFetching: predicate => createAction(searchActionTypes.SET_SEARCH_IS_FECTHING, predicate)
 };
 
 export const fetchItemsThunk = (name, props) => (dispatch, getState) => {
@@ -33,12 +33,12 @@ export const fetchItemsThunk = (name, props) => (dispatch, getState) => {
 
 export default function searchReducer(state = initialState, action) {
   switch (action.type) {
-    case searchActionTypes.SET_ITEM_NAME:
+    case searchActionTypes.SET_SEARCH_ITEM_NAME:
       return {
         ...state,
         searchQuery: action.payload
       };
-    case searchActionTypes.SET_IS_FETCHING:
+    case searchActionTypes.SET_SEARCH_IS_FECTHING:
       return {
         ...state,
         isFetchingItems: action.payload
