@@ -20,8 +20,12 @@ describe('Discounts Reducer Test Suite', () => {
     expect(newState.isFetchingItems).toBeTruthy();
   });
   it('should set discounts', () => {
-    const newState = discountsReducer(initialState, discountsActions.setDiscounts(mockData));
-    expect(initialState.discounts).not.toBe(newState.discounts);
-    expect(newState.discounts).toEqual(expect.arrayContaining(mockData));
+    new Promise((resolve, reject) => {
+      discountsReducer(initialState, discountsActions.setDiscounts(mockData));
+    }).then(newState => {
+      expect(initialState.discounts).not.toBe(newState.discounts);
+      expect(newState.discounts).toEqual(expect.arrayContaining(mockData));
+      resolve(newState)
+    })
   });
 });
