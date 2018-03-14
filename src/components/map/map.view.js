@@ -1,33 +1,24 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import { Map, TileLayer } from 'react-leaflet';
+import serviceUrl from '../../services/servicesUrls';
 
 import PropTypes from 'prop-types';
 import MapMarker from '../mapMarker/mapMarker.container';
 
-export default class Map extends Component {
-  styles = {
-    height: '100vh'
-  };
+export default class MapView extends Component {
   render() {
+    const { currentUserLocation } = this.props;
     return (
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyCKrI3dCD16cWj43TZcHUSalpLEc48nHPw' }}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-        style={this.styles}
-      >
-        {this.renderMarkers(this.props.foundItems)}
-      </GoogleMapReact>
+      <Map center={currentUserLocation} zoom={12}>
+        <TileLayer url={serviceUrl.tileLayerUrl} />
+        {<MapMarker foundItems={this.props.foundItems} />}
+      </Map>
     );
   }
-  renderMarkers = foundItems =>
-    foundItems.map((item, idx) => (
-      <MapMarker key={idx + Math.random()} lat={item.lat} lng={item.lng} item={item} />
-    ));
 }
 
 Map.propTypes = {
-  center: PropTypes.object.isRequired,
+  center: PropTypes.array.isRequired,
   zoom: PropTypes.number.isRequired,
-  foundItems: PropTypes.arrayOf(Object).isRequired
+  foundItems: PropTypes.arrayOf(Object)
 };

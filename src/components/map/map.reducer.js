@@ -1,10 +1,7 @@
 import createAction from '../../helpers/actionCreator';
 
 const initialState = {
-  currenUsertLocation: {
-    lat: -26.065547,
-    lng: 28.046602
-  },
+  currentUserLocation: [-26.065547, 28.046602],
   center: { lat: -26.107567, lng: 28.056702 },
   zoom: 11,
   markerInfo: []
