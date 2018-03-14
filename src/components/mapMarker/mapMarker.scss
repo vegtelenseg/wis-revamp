@@ -48,6 +48,12 @@
   }
 }
 
+.leaflet-popup-content {
+  span {
+    display: block;
+  }
+}
+
 @keyframes pulsate {
   0% {
     transform: scale(0.1, 0.1);

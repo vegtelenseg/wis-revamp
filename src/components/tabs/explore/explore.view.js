@@ -6,7 +6,7 @@ import Search from '../../search/search.container';
 export default class ExploreView extends React.Component {
   render() {
     return (
-      <div>
+      <div id="explore-tab">
         <Search activeTab="EXPLORE" />
         <Map />
       </div>

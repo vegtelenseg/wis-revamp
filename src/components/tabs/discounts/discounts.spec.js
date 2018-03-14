@@ -22,10 +22,12 @@ describe('Discounts Reducer Test Suite', () => {
   it('should set discounts', () => {
     new Promise((resolve, reject) => {
       discountsReducer(initialState, discountsActions.setDiscounts(mockData));
-    }).then(newState => {
-      expect(initialState.discounts).not.toBe(newState.discounts);
-      expect(newState.discounts).toEqual(expect.arrayContaining(mockData));
-      resolve(newState)
     })
+      .then(newState => {
+        expect(initialState.discounts).not.toBe(newState.discounts);
+        expect(newState.discounts).toEqual(expect.arrayContaining(mockData));
+        resolve(newState);
+      })
+      .catch(err => console.error('Could not set the discounts.'));
   });
 });
