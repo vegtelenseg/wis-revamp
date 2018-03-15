@@ -31,6 +31,6 @@ describe('Watched Reducer Test Suite', () => {
       watchedActions.setWatchedProduct(mockData)
     );
     //expect(newState.watchedItems).not.toBe(initialState.watchedItems); Weirdness all the damn way
-    expect(newState.watchedItems).toEqual(expect.arrayContaining(mockData));
+    expect(...newState.watchedItems).toEqual(expect.arrayContaining(mockData));
   });
 });
