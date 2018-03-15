@@ -72,7 +72,7 @@ Array.prototype.inArray = function (comparer) {
 
 Array.prototype.pushIfNotExist = function (element, comparer) {
   if (!this.inArray(comparer)) {
-    this.push(...element);
+    this.push(element);
   } else {
     alert('Already watching this item :)');
   }
