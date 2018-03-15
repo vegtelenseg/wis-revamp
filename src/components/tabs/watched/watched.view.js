@@ -6,20 +6,44 @@ export default class WatchedView extends React.Component {
   render() {
     const { watchedItems } = this.props;
     return (
-      <div>
+      <div className="watched-tab-panel">
         <Search activeTab="WATCHED" />
-        {watchedItems.map((watchedItem, idx) => (
-          <div key={idx}>
-            <ul>
-              <li>{watchedItem.productName}</li>
-              <li>{watchedItem.productBrand}</li>
-              <li>{watchedItem.inStock}</li>
-              <li>{watchedItem.checkoutRate}</li>
-              <li>{watchedItem.bestBefore}</li>
-            </ul>
-            <input type="submit" value="unwatch" onClick={() => this.props.setUnWatchProduct(watchedItem)} />
-          </div>
-        ))}
+        {watchedItems.length > 0 ? (
+          watchedItems.map((watchedItem, idx) => (
+            <div key={idx} className="watched-item-container">
+              <ul className="watched-item">
+                <li>
+                  <strong>Name: </strong>
+                  {watchedItem.productName}
+                </li>
+                <li>
+                  <strong>Brand: </strong>
+                  {watchedItem.productBrand}
+                </li>
+                <li>
+                  <strong>In Stock: </strong>
+                  {watchedItem.inStock}
+                </li>
+                <li>
+                  <strong>Checkout Rate: </strong>
+                  {watchedItem.checkoutRate}
+                </li>
+                <li>
+                  <strong>Best Before: </strong>
+                  {watchedItem.bestBefore}
+                </li>
+              </ul>
+              <input
+                type="submit"
+                value="unwatch"
+                className="button"
+                onClick={() => this.props.setUnWatchProduct(watchedItem)}
+              />
+            </div>
+          ))
+        ) : (
+          <div>No Watched Items</div>
+        )}
       </div>
     );
   }
