@@ -49,33 +49,27 @@ export default function watchedReducer(state = initialState, action) {
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
       const newState = { ...state };
       const element = action.payload;
-      newState.watchedItems.pushIfNotExist(element, function(e) {
-        console.log('Name: ', e.productName);
-        return (
-          e.productName === element.productName &&
-          e.productBrand === element.productBrand
-        );
-      });
-      return {
-        ...state,
-        watchedItems: newState.watchedItems,
-        isFetchingItems: false
-      };
+      newState.watchedItems.pushIfNotExist(element, e => callback(e));
+      return newState;
     default:
       return state;
   }
 }
 
-Array.prototype.inArray = function(comparer) {
+const callback = e =>
+  e.productName === element.productName &&
+  e.productBrand === element.productBrand;
+
+Array.prototype.inArray = function (comparer) {
   for (var i = 0; i < this.length; i++) {
     if (comparer(this[i])) return true;
   }
   return false;
 };
 
-Array.prototype.pushIfNotExist = function(element, comparer) {
+Array.prototype.pushIfNotExist = function (element, comparer) {
   if (!this.inArray(comparer)) {
-    this.push(element);
+    this.push(...element);
   } else {
     alert('Already watching this item :)');
   }
