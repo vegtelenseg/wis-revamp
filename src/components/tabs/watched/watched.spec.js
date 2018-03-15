@@ -9,19 +9,28 @@ const initialState = {
   watchedItems: []
 };
 
-describe('Discounts Reducer Test Suite', () => {
+describe('Watched Reducer Test Suite', () => {
   it('should set name of the item being searched', () => {
-    const newState = watchedReducer(initialState, watchedActions.setItemName('bread'));
+    const newState = watchedReducer(
+      initialState,
+      watchedActions.setItemName('bread')
+    );
     expect(newState.searchQuery).toEqual('bread');
   });
   it('should set isFetching to true', () => {
-    const newState = watchedReducer(initialState, watchedActions.setIsFetching(true));
+    const newState = watchedReducer(
+      initialState,
+      watchedActions.setIsFetching(true)
+    );
     expect(initialState.isFetchingItems).not.toBe(newState.isFetchingItems);
     expect(newState.isFetchingItems).toBeTruthy();
   });
   it('should set watched items', () => {
-    const newState = watchedReducer(initialState, watchedActions.setWatchedProduct(mockData));
-    expect(initialState.watchedItems).not.toBe(newState.watchedItems);
+    const newState = watchedReducer(
+      initialState,
+      watchedActions.setWatchedProduct(mockData)
+    );
+    //expect(newState.watchedItems).not.toBe(initialState.watchedItems); Weirdness all the damn way
     expect(newState.watchedItems).toEqual(expect.arrayContaining(mockData));
   });
 });

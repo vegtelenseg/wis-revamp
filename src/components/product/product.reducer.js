@@ -14,8 +14,10 @@ const productActionTypes = {
 };
 
 export const productActions = {
-  setItemCheckoutRate: itemId => createAction(productActionTypes.SET_ITEM_CHECKOUT_RATE, 20),
-  setItemsInStock: itemId => createAction(productActionTypes.SET_ITEMS_IN_STOCK, 12)
+  setItemCheckoutRate: itemId =>
+    createAction(productActionTypes.SET_ITEM_CHECKOUT_RATE, 20),
+  setItemsInStock: itemId =>
+    createAction(productActionTypes.SET_ITEMS_IN_STOCK, 12)
 };
 
 export default function productReducer(state = initialState, action) {

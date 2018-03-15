@@ -8,7 +8,8 @@ const mapMarkerActionTypes = {
 };
 
 export const mapMarkerActions = {
-  showItemInfo: predicate => createAction(mapMarkerActionTypes.SHOW_ITEM_INFO, predicate)
+  showItemInfo: predicate =>
+    createAction(mapMarkerActionTypes.SHOW_ITEM_INFO, predicate)
 };
 
 export default function mapMarkerReducer(state = initialState, action) {

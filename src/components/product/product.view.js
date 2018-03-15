@@ -1,22 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Popup } from 'react-leaflet';
 
-const Product = ({ item, isVisible }) => {
-  return (
+const Product = ({ item, setWatchedProduct }) =>
+  renderItemDetails(item, setWatchedProduct);
+
+const renderItemDetails = (item, setWatchedProduct) => (
+  <Popup>
     <div>
-      <ul
-        className={isVisible ? 'product-items-container show-item-info' : 'product-items-container'}
-      >
-        {renderItemDetails(item)}
-      </ul>
+      <span>
+        <strong>Name:</strong> {item.productName}
+      </span>
+      <span>
+        <strong>Brand:</strong> {item.productBrand}
+      </span>
+      <span>
+        <strong>In Stock:</strong> {item.inStock}
+      </span>
+      <span>
+        <strong>Checkout Rate:</strong> {item.checkoutRate}
+      </span>
+      <input
+        type="submit"
+        value="watch"
+        className="watch"
+        onClick={() => setWatchedProduct(item)}
+      />
     </div>
-  );
-};
-
-const renderItemDetails = item =>
-  Object.keys(item).map(itemKey => {
-    return <li key={Math.random()}>{item[itemKey]}</li>;
-  });
+  </Popup>
+);
 
 export default Product;
 Product.propTypes = {

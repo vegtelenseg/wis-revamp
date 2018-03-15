@@ -14,7 +14,8 @@ const mapActionTypes = {
 
 export const mapActions = {
   setMapCurrentLocation: function(coords) {},
-  setMapMarkers: markersInfo => createAction(mapActionTypes.SET_MARKERS, markersInfo)
+  setMapMarkers: markersInfo =>
+    createAction(mapActionTypes.SET_MARKERS, markersInfo)
 };
 
 export default function mapReducer(state = initialState, action) {

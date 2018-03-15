@@ -14,9 +14,12 @@ const exploreActionTypes = {
 };
 
 export const exploreActions = {
-  setItemName: name => createAction(exploreActionTypes.SET_EXPLORE_ITEM_NAME, name),
-  setIsFetching: predicate => createAction(exploreActionTypes.SET_EXPLORE_IS_FETCHING, predicate),
-  setFoundProduct: product => createAction(exploreActionTypes.SET_EXPLORE_FOUND_ITEMS, product)
+  setItemName: name =>
+    createAction(exploreActionTypes.SET_EXPLORE_ITEM_NAME, name),
+  setIsFetching: predicate =>
+    createAction(exploreActionTypes.SET_EXPLORE_IS_FETCHING, predicate),
+  setFoundProduct: product =>
+    createAction(exploreActionTypes.SET_EXPLORE_FOUND_ITEMS, product)
 };
 
 export const fetchExploreItemsThunk = name => (dispatch, getState) => {

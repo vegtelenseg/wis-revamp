@@ -3,12 +3,20 @@ export function getHintBaloonVerticalPosClass(y /*, mapHeight*/) {
   return y > K_MAX_BALLOON_HEIGHT ? 'hint--top' : 'hint--bottom';
 }
 
-export function getHintBaloonHorizontalPosStyle(x, markerWidth, markerOffset, mapWidth) {
+export function getHintBaloonHorizontalPosStyle(
+  x,
+  markerWidth,
+  markerOffset,
+  mapWidth
+) {
   const K_BALLOON_WIDTH_BASE = 250;
   // offset from map side
   const K_BALLOON_MAP_OFFSET = 10;
   // balloon with not more than map width
-  const K_BALLOON_WIDTH = Math.min(K_BALLOON_WIDTH_BASE, mapWidth - 2 * K_BALLOON_MAP_OFFSET);
+  const K_BALLOON_WIDTH = Math.min(
+    K_BALLOON_WIDTH_BASE,
+    mapWidth - 2 * K_BALLOON_MAP_OFFSET
+  );
   // default ballon offset from arrow center i want
   const K_BALLOON_DEFAULT_OFFSET = K_BALLOON_WIDTH * 0.15;
   // from corner

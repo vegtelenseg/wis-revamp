@@ -11,8 +11,10 @@ const searchActionTypes = {
 };
 
 export const searchActions = {
-  setItemName: name => createAction(searchActionTypes.SET_SEARCH_ITEM_NAME, name),
-  setIsFetching: predicate => createAction(searchActionTypes.SET_SEARCH_IS_FECTHING, predicate)
+  setItemName: name =>
+    createAction(searchActionTypes.SET_SEARCH_ITEM_NAME, name),
+  setIsFetching: predicate =>
+    createAction(searchActionTypes.SET_SEARCH_IS_FECTHING, predicate)
 };
 
 export const fetchItemsThunk = (name, props) => (dispatch, getState) => {

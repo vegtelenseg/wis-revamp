@@ -9,7 +9,8 @@ export const getProductByNameFromDB = name =>
       console.error('Could not retrieve products: ', err);
     });
 
-export const getProductByNameFromList = (name, list) => list.filter(item => item !== name);
+export const getProductByNameFromList = (name, list) =>
+  list.filter(item => item !== name);
 
 export const getDiscountsByNameFromDB = name =>
   getProductByNameFromDB(name).then(product => product.data);

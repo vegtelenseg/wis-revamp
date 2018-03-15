@@ -11,11 +11,17 @@ const initialState = {
 
 describe('Discounts Reducer Test Suite', () => {
   it('should set name of the item being searched', () => {
-    const newState = discountsReducer(initialState, discountsActions.setItemName('bread'));
+    const newState = discountsReducer(
+      initialState,
+      discountsActions.setItemName('bread')
+    );
     expect(newState.searchQuery).toEqual('bread');
   });
   it('should set isFetching to true', () => {
-    const newState = discountsReducer(initialState, discountsActions.setIsFetching(true));
+    const newState = discountsReducer(
+      initialState,
+      discountsActions.setIsFetching(true)
+    );
     expect(initialState.isFetchingItems).not.toBe(newState.isFetchingItems);
     expect(newState.isFetchingItems).toBeTruthy();
   });

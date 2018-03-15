@@ -14,13 +14,18 @@ const discountsActionTypes = {
 };
 
 export const discountsActions = {
-  setItemName: name => createAction(discountsActionTypes.SET_DISCOUNTS_ITEM_NAME, name),
+  setItemName: name =>
+    createAction(discountsActionTypes.SET_DISCOUNTS_ITEM_NAME, name),
   setIsFetching: predicate =>
     createAction(discountsActionTypes.SET_DISCOUNTS_IS_FETCHING, predicate),
-  setDiscounts: discounts => createAction(discountsActionTypes.SET_DISCOUNTS, discounts)
+  setDiscounts: discounts =>
+    createAction(discountsActionTypes.SET_DISCOUNTS, discounts)
 };
 
-export const fetchDiscountsItemsThunk = (name, activeTab) => (dispatch, getState) => {
+export const fetchDiscountsItemsThunk = (name, activeTab) => (
+  dispatch,
+  getState
+) => {
   if (!getState().isFetchingItems) {
     dispatch(discountsActions.setIsFetching(true));
     getDiscountsByNameFromDB(name).then(discounts =>
