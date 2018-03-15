@@ -1,9 +1,10 @@
 .search-container {
-  position: absolute;
+  position: relative;
   z-index: 9999;
-  top: 3em;
+  top: 0;
   left: 50%;
-  width: 75%;
+  width: 74%;
+  margin: 2em 0;
   transform: translateX(-50%);
   #search-input {
     outline: none;
