@@ -49,14 +49,17 @@ export default function watchedReducer(state = initialState, action) {
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
       const newState = { ...state };
       const element = action.payload;
-      newState.watchedItems.pushIfNotExist(element, e => callback(e));
-      return newState;
+      newState.watchedItems.pushIfNotExist(element, e => callback(e, element));
+      return {
+        ...newState,
+        isFetchingItems: false
+      };
     default:
       return state;
   }
 }
 
-const callback = e =>
+const callback = (e, element) =>
   e.productName === element.productName &&
   e.productBrand === element.productBrand;
 
@@ -69,7 +72,7 @@ Array.prototype.inArray = function (comparer) {
 
 Array.prototype.pushIfNotExist = function (element, comparer) {
   if (!this.inArray(comparer)) {
-    this.push(...element);
+    this.push(element);
   } else {
     alert('Already watching this item :)');
   }
