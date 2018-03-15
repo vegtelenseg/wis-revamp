@@ -5,7 +5,6 @@ import Search from '../../search/search.container';
 export default class WatchedView extends React.Component {
   render() {
     const { watchedItems } = this.props;
-    console.log("Watched: ", watchedItems);
     return (
       <div>
         <Search activeTab="WATCHED" />
@@ -18,6 +17,7 @@ export default class WatchedView extends React.Component {
               <li>{watchedItem.checkoutRate}</li>
               <li>{watchedItem.bestBefore}</li>
             </ul>
+            <input type="submit" value="unwatch" onClick={() => this.props.setUnWatchProduct(watchedItem)} />
           </div>
         ))}
       </div>

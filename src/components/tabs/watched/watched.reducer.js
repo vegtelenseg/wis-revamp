@@ -10,7 +10,8 @@ const initialState = {
 const watchedActionTypes = {
   SET_WATCHED_ITEM_NAME: 'SET_WATCHED_ITEM_NAME',
   SET_WATCHED_FOUND_ITEMS: 'SET_WATCHED_FOUND_ITEMS',
-  SET_WATCHED_IS_FETCHED: 'SET_WATCHED_IS_FETCHED'
+  SET_WATCHED_IS_FETCHED: 'SET_WATCHED_IS_FETCHED',
+  SET_WATCHED_UNWATCH_ITEM: 'SET_WATCHED_UNWATCH_ITEM'
 };
 
 export const watchedActions = {
@@ -18,9 +19,11 @@ export const watchedActions = {
     createAction(watchedActionTypes.SET_WATCHED_ITEM_NAME, name),
   setWatchedProduct: product =>
     createAction(watchedActionTypes.SET_WATCHED_FOUND_ITEMS, product),
+  setUnWatchProduct: product => createAction(watchedActionTypes.SET_WATCHED_UNWATCH_ITEM, product),
   setIsFetching: predicate =>
     createAction(watchedActionTypes.SET_WATCHED_IS_FETCHED, predicate)
 };
+
 
 export const fetchWatchedItemsThunk = (name, activeTab) => (
   dispatch,
@@ -35,25 +38,31 @@ export const fetchWatchedItemsThunk = (name, activeTab) => (
 };
 
 export default function watchedReducer(state = initialState, action) {
+  let newState = { ...state };
   switch (action.type) {
     case watchedActionTypes.SET_WATCHED_ITEM_NAME:
       return {
-        ...state,
+        ...newState,
         searchQuery: action.payload
       };
     case watchedActionTypes.SET_WATCHED_IS_FETCHED:
       return {
-        ...state,
+        ...newState,
         isFetchingItems: action.payload
       };
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
-      const newState = { ...state };
       const element = action.payload;
       newState.watchedItems.pushIfNotExist(element, e => callback(e, element));
       return {
         ...newState,
         isFetchingItems: false
       };
+    case watchedActionTypes.SET_WATCHED_UNWATCH_ITEM:
+      const newPayload = newState.watchedItems.filter(item => item !== action.payload)
+      return {
+        ...newState,
+        watchedItems: newPayload
+      }
     default:
       return state;
   }
