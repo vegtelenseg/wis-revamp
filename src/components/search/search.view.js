@@ -13,7 +13,11 @@ export default class Search extends React.Component {
   render() {
     return (
       <div className="search-container">
-        <input id="search-input" type="text" onKeyPress={e => this.isEnter(e)} />
+        <input
+          id="search-input"
+          type="text"
+          onKeyPress={e => this.isEnter(e)}
+        />
       </div>
     );
   }
