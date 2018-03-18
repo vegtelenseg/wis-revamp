@@ -1,41 +1,44 @@
 import React from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
 
-import ExloreViewContainer from './explore/explore.container';
+import ExploreViewContainer from './explore/explore.container';
 import DiscountsViewContainer from './discounts/discounts.container';
 import WatchedViewContainer from './watched/watched.container';
 
 export default class NavigationTabs extends React.Component {
   render() {
+    console.log('Watched items: ', this.props.watchedItems.length);
     return (
-      <Tabs className="tabs-container">
-        <TabPanel className="tab-panel">
-          <ExloreViewContainer />
-        </TabPanel>
-        <TabPanel className="tab-panel">
+      <Tabs className="tabs-container" renderActiveTabContentOnly={true}>
+        <TabContent for="exploreView">
+          <ExploreViewContainer />
+        </TabContent>
+        <TabContent for="watchedView">
           <WatchedViewContainer />
-        </TabPanel>
-        <TabPanel className="tab-panel">
+        </TabContent>
+        <TabContent for="discountsView">
           <DiscountsViewContainer />
-        </TabPanel>
-        <TabPanel className="tab-panel">
-          <h2>Any content 4</h2>
-        </TabPanel>
+        </TabContent>
 
-        <TabList className="tabs-list">
-          <Tab className="tab">
+        <div className="tabs-list">
+          <TabLink activeClassName="active" className="tab" to="exploreView">
             <i className="fas fa-home" />
-          </Tab>
-          <Tab className="tab">
+          </TabLink>
+          <TabLink activeClassName="active" className="tab" to="watchedView">
+            <span>{this.props.watchedItems.length}</span>
             <i className="fas fa-eye" />
-          </Tab>
-          <Tab className="tab">
+          </TabLink>
+          <TabLink activeClassName="active" className="tab" to="discountsView">
             <i className="fas fa-tags" />
-          </Tab>
-          <Tab className="tab">
+          </TabLink>
+          <TabLink
+            activeClassName="active"
+            className="tab"
+            to="improvementsView"
+          >
             <i className="fas fa-chart-line" />
-          </Tab>
-        </TabList>
+          </TabLink>
+        </div>
       </Tabs>
     );
   }
