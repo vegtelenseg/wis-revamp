@@ -2,7 +2,7 @@ export const actionTypes = {
   NAVIGATE_TO: 'NAVIGATE_TO'
 };
 
-export const actions = {
+export const navigationTabsActions = {
   setActiveNavigationTabAction: function(actionType) {
     return (dispatch, getState) => {
       console.log('Dispatch: ', dispatch);

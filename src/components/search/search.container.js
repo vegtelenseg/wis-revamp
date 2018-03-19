@@ -6,7 +6,7 @@ import { fetchExploreItemsThunk } from '../tabs/explore/explore.reducer';
 import { fetchWatchedItemsThunk } from '../tabs/watched/watched.reducer';
 import { fetchDiscountsItemsThunk } from '../tabs/discounts/discounts.reducer';
 
-import Search from './search.view';
+import SearchView from './search.view';
 
 const mapStateProps = ({ searchReducer }) => ({
   ...searchReducer
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateProps, mapDispatchToProps)(Search);
+export default connect(mapStateProps, mapDispatchToProps)(SearchView);

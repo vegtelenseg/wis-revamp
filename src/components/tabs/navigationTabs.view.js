@@ -5,9 +5,11 @@ import ExploreViewContainer from './explore/explore.container';
 import DiscountsViewContainer from './discounts/discounts.container';
 import WatchedViewContainer from './watched/watched.container';
 
-export default class NavigationTabs extends React.Component {
+export default class NavigationTabsView extends React.Component {
+	state = {
+		watchedItems: 0
+	}
   render() {
-    console.log('Watched items: ', this.props.watchedItems.length);
     return (
       <Tabs className="tabs-container" renderActiveTabContentOnly={true}>
         <TabContent for="exploreView">
@@ -25,7 +27,7 @@ export default class NavigationTabs extends React.Component {
             <i className="fas fa-home" />
           </TabLink>
           <TabLink activeClassName="active" className="tab" to="watchedView">
-            <span>{this.props.watchedItems.length}</span>
+            <span>{this.state.watchedItems}</span>
             <i className="fas fa-eye" />
           </TabLink>
           <TabLink activeClassName="active" className="tab" to="discountsView">

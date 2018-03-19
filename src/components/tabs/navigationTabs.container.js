@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { actions } from './navigationTabs.reducer';
+import { navigationTabsActions } from './navigationTabs.reducer';
 
-import NavigationTabs from './navigationTabs.view';
+import NavigationTabsView from './navigationTabs.view';
 
 const mapStateToProps = ({ navigationTabsReducer, watchedReducer }) => ({
   ...navigationTabsReducer,
@@ -13,9 +13,9 @@ const mapStateToProps = ({ navigationTabsReducer, watchedReducer }) => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      ...actions
+      ...navigationTabsActions
     },
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationTabs);
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationTabsView);
