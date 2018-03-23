@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Popup } from 'react-leaflet';
 
-const Product = ({ item, setWatchedProduct }) =>
-  renderItemDetails(item, setWatchedProduct);
-
-const renderItemDetails = (item, setWatchedProduct) => (
+const Product = ({ item, setAndUpdateWatchedItemsThunk }) => (
   <Popup>
     <div>
       <span>
@@ -24,7 +21,7 @@ const renderItemDetails = (item, setWatchedProduct) => (
         type="submit"
         value="watch"
         className="watch"
-        onClick={() => setWatchedProduct(item)}
+        onClick={() => setAndUpdateWatchedItemsThunk(item)}
       />
     </div>
   </Popup>

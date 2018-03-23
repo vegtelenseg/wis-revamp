@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-export default class Search extends React.Component {
+export default class SearchView extends React.Component {
   isEnter = e => {
     if (e.key === 'Enter' && e.target.value.length > 0) {
       this.props.setItemName(e.target.value);
@@ -23,7 +23,7 @@ export default class Search extends React.Component {
   }
 }
 
-Search.propTypes = {
+SearchView.propTypes = {
   value: PropTypes.string,
   setItemName: PropTypes.func.isRequired,
   fetchItemsThunk: PropTypes.func.isRequired,

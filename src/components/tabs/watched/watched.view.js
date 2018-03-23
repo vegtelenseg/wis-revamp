@@ -1,13 +1,14 @@
 import React from 'react';
 
-import Search from '../../search/search.container';
+import SearchView from '../../search/search.container';
 
 export default class WatchedView extends React.Component {
   render() {
     const { watchedItems } = this.props;
+    console.log('W Items: ', watchedItems);
     return (
       <div className="watched-tab-panel">
-        <Search activeTab="WATCHED" />
+        <SearchView activeTab="WATCHED" />
         {watchedItems.length > 0 ? (
           watchedItems.map((watchedItem, idx) => (
             <div key={idx} className="watched-item-container">
