@@ -37,6 +37,18 @@ export const fetchWatchedItemsThunk = (name, activeTab) => (
   }
 };
 
+export const setAndUpdateWatchedItemsThunk = item => {
+  return dispatch => {
+    dispatch(watchedActions.setWatchedProduct(item));
+    dispatch(
+      navigationTabsActions.setNumberOfWatchedItems(
+        initialState.watchedItems.length
+      )
+    );
+    return;
+  };
+};
+
 export default function watchedReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
@@ -53,8 +65,9 @@ export default function watchedReducer(state = initialState, action) {
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
       const element = action.payload;
       newState.watchedItems.pushIfNotExist(element, e => callback(e, element));
-      console.log("DAmn: ", action.payload)
-      navigationTabsActions.setNumberOfWatchedItems(newState.watchedItems.length);
+      navigationTabsActions.setNumberOfWatchedItems(
+        newState.watchedItems.length
+      );
       return {
         ...newState,
         isFetchingItems: false
@@ -76,14 +89,14 @@ const callback = (e, element) =>
   e.productName === element.productName &&
   e.productBrand === element.productBrand;
 
-Array.prototype.inArray = function (comparer) {
+Array.prototype.inArray = function(comparer) {
   for (var i = 0; i < this.length; i++) {
     if (comparer(this[i])) return true;
   }
   return false;
 };
 
-Array.prototype.pushIfNotExist = function (element, comparer) {
+Array.prototype.pushIfNotExist = function(element, comparer) {
   if (!this.inArray(comparer)) {
     this.push(element);
   } else {

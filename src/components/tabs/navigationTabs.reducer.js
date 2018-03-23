@@ -5,11 +5,10 @@ export const actionTypes = {
 
 export const navigationTabsActions = {
   setNumberOfWatchedItems: number => (dispatch, getState) => {
-    console.log('Dispatch: ', dispatch);
     return dispatch({
       type: actionTypes.SET_NUMBER_OF_WATCHED_ITEMS,
       payload: number
-    })
+    });
   }
 };
 
@@ -27,7 +26,7 @@ export default function navigationTabsReducer(state = initialState, action) {
       return {
         ...state,
         numberOfWatchedItems: action.payload
-      }
+      };
     default:
       return state;
   }

@@ -6,13 +6,13 @@ import { navigationTabsActions } from './navigationTabs.reducer';
 import NavigationTabsView from './navigationTabs.view';
 
 const mapStateToProps = ({ navigationTabsReducer }) => ({
-  ...navigationTabsReducer,
+  ...navigationTabsReducer
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      ...navigationTabsActions,
+      ...navigationTabsActions
     },
     dispatch
   );

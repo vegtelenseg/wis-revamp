@@ -2,6 +2,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import { Marker } from 'react-leaflet';
 import InfoWindow from '../product/product.container';
+import { setAndUpdateWatchedItemsThunk } from '../tabs/watched/watched.reducer';
 
 export default class MapMarker extends React.Component {
   render() {
@@ -12,7 +13,10 @@ export default class MapMarker extends React.Component {
       const position = [item.lat, item.lng];
       return (
         <Marker key={idx + Math.random()} position={position}>
-          <InfoWindow item={item} />
+          <InfoWindow
+            item={item}
+            setAndUpdateWatchedItemsThunk={setAndUpdateWatchedItemsThunk}
+          />
         </Marker>
       );
     });
