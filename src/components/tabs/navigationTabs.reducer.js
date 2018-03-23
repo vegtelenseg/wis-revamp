@@ -1,17 +1,19 @@
 export const actionTypes = {
-  NAVIGATE_TO: 'NAVIGATE_TO'
+  NAVIGATE_TO: 'NAVIGATE_TO',
+  SET_NUMBER_OF_WATCHED_ITEMS: 'SET_NUMBER_OF_WATCHED_ITEMS'
 };
 
 export const navigationTabsActions = {
-  setActiveNavigationTabAction: function(actionType) {
-    return (dispatch, getState) => {
-      console.log('Dispatch: ', dispatch);
-    };
+  setNumberOfWatchedItems: number => (dispatch, getState) => {
+    return dispatch({
+      type: actionTypes.SET_NUMBER_OF_WATCHED_ITEMS,
+      payload: number
+    });
   }
 };
 
 const initialState = {
-  activeTabIndex: 0
+  numberOfWatchedItems: 0
 };
 
 export default function navigationTabsReducer(state = initialState, action) {
@@ -19,6 +21,11 @@ export default function navigationTabsReducer(state = initialState, action) {
     case actionTypes.NAVIGATE_TO:
       return {
         ...state
+      };
+    case actionTypes.SET_NUMBER_OF_WATCHED_ITEMS:
+      return {
+        ...state,
+        numberOfWatchedItems: action.payload
       };
     default:
       return state;

@@ -1,6 +1,6 @@
 import createAction from '../../../helpers/actionCreator';
 import { getProductByNameFromDB } from '../../../services/services';
-
+import { navigationTabsActions } from '../navigationTabs.reducer';
 const initialState = {
   searchQuery: '',
   isFetchingItems: false,
@@ -37,6 +37,18 @@ export const fetchWatchedItemsThunk = (name, activeTab) => (
   }
 };
 
+export const setAndUpdateWatchedItemsThunk = item => {
+  return dispatch => {
+    dispatch(watchedActions.setWatchedProduct(item));
+    dispatch(
+      navigationTabsActions.setNumberOfWatchedItems(
+        initialState.watchedItems.length
+      )
+    );
+    return;
+  };
+};
+
 export default function watchedReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
@@ -53,6 +65,9 @@ export default function watchedReducer(state = initialState, action) {
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
       const element = action.payload;
       newState.watchedItems.pushIfNotExist(element, e => callback(e, element));
+      navigationTabsActions.setNumberOfWatchedItems(
+        newState.watchedItems.length
+      );
       return {
         ...newState,
         isFetchingItems: false
