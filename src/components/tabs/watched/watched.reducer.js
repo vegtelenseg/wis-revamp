@@ -38,26 +38,25 @@ export const fetchWatchedItemsThunk = (name, activeTab) => (
 };
 
 export const setAndUpdateWatchedItemsThunk = item => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const prevWatchedItems = getState().watchedReducer;
     dispatch(watchedActions.setWatchedProduct(item));
-    dispatch(
-      navigationTabsActions.setNumberOfWatchedItems(
-       'INC'
-      )
-    );
+    const currentWatchedItems = getState().navigationTabsReducer;
+    if (
+      currentWatchedItems.numberOfWatchedItems <
+      prevWatchedItems.watchedItems.length
+    ) {
+      dispatch(navigationTabsActions.setNumberOfWatchedItems('INC'));
+    }
     return;
   };
 };
 
 export const setUnWatchedAndUpdateWatchedItemsThunk = item => {
   return dispatch => {
-		dispatch(watchedActions.setUnWatchProduct(item));
-		console.log("Wtched: ", initialState.watchedItems.length)
-    dispatch(
-      navigationTabsActions.setNumberOfWatchedItems(
-        'DEC'
-      )
-		);
+    dispatch(watchedActions.setUnWatchProduct(item));
+    console.log('Wtched: ', initialState.watchedItems.length);
+    dispatch(navigationTabsActions.setNumberOfWatchedItems('DEC'));
     return;
   };
 };
@@ -66,30 +65,30 @@ export default function watchedReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
     case watchedActionTypes.SET_WATCHED_ITEM_NAME:
-      return {
+      return (newState = {
         ...newState,
         searchQuery: action.payload
-      };
+      });
     case watchedActionTypes.SET_WATCHED_IS_FETCHED:
-      return {
+      return (newState = {
         ...newState,
         isFetchingItems: action.payload
-      };
+      });
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
       const element = action.payload;
       newState.watchedItems.pushIfNotExist(element, e => callback(e, element));
-      return {
+      return (newState = {
         ...newState,
         isFetchingItems: false
-      };
+      });
     case watchedActionTypes.SET_WATCHED_UNWATCH_ITEM:
       const newPayload = newState.watchedItems.filter(
         item => item !== action.payload
-			);
-      return {
+      );
+      return (newState = {
         ...newState,
         watchedItems: newPayload
-      };
+      });
     default:
       return state;
   }

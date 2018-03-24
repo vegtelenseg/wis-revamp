@@ -17,7 +17,6 @@ const initialState = {
 };
 
 export default function navigationTabsReducer(state = initialState, action) {
-
   switch (action.type) {
     case actionTypes.NAVIGATE_TO:
       return {
@@ -26,7 +25,10 @@ export default function navigationTabsReducer(state = initialState, action) {
     case actionTypes.SET_NUMBER_OF_WATCHED_ITEMS:
       return {
         ...state,
-        numberOfWatchedItems: action.payload === 'INC' ? ++state.numberOfWatchedItems : --state.numberOfWatchedItems
+        numberOfWatchedItems:
+          action.payload === 'INC'
+            ? ++state.numberOfWatchedItems
+            : --state.numberOfWatchedItems
       };
     default:
       return state;

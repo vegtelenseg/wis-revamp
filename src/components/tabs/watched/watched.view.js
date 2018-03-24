@@ -37,7 +37,9 @@ export default class WatchedView extends React.Component {
                 type="submit"
                 value="unwatch"
                 className="button"
-                onClick={() => this.props.setUnWatchedAndUpdateWatchedItemsThunk(watchedItem)}
+                onClick={() =>
+                  this.props.setUnWatchedAndUpdateWatchedItemsThunk(watchedItem)
+                }
               />
             </div>
           ))
