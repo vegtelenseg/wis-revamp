@@ -25,7 +25,7 @@ export const watchedActions = {
     createAction(watchedActionTypes.SET_WATCHED_IS_FETCHED, predicate)
 };
 
-export const fetchWatchedItemsThunk = (name, activeTab) => (
+export const fetchWatchedItemsThunk = name => (
   dispatch,
   getState
 ) => {
@@ -55,7 +55,6 @@ export const setAndUpdateWatchedItemsThunk = item => {
 export const setUnWatchedAndUpdateWatchedItemsThunk = item => {
   return dispatch => {
     dispatch(watchedActions.setUnWatchProduct(item));
-    console.log('Wtched: ', initialState.watchedItems.length);
     dispatch(navigationTabsActions.setNumberOfWatchedItems('DEC'));
     return;
   };
