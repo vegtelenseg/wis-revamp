@@ -42,7 +42,7 @@ export const setAndUpdateWatchedItemsThunk = item => {
     dispatch(watchedActions.setWatchedProduct(item));
     dispatch(
       navigationTabsActions.setNumberOfWatchedItems(
-        initialState.watchedItems.length
+       'INC'
       )
     );
     return;
@@ -51,12 +51,13 @@ export const setAndUpdateWatchedItemsThunk = item => {
 
 export const setUnWatchedAndUpdateWatchedItemsThunk = item => {
   return dispatch => {
-    dispatch(watchedActions.setUnWatchProduct(item));
+		dispatch(watchedActions.setUnWatchProduct(item));
+		console.log("Wtched: ", initialState.watchedItems.length)
     dispatch(
       navigationTabsActions.setNumberOfWatchedItems(
-        --initialState.watchedItems.length
+        'DEC'
       )
-    );
+		);
     return;
   };
 };
@@ -77,9 +78,6 @@ export default function watchedReducer(state = initialState, action) {
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
       const element = action.payload;
       newState.watchedItems.pushIfNotExist(element, e => callback(e, element));
-      navigationTabsActions.setNumberOfWatchedItems(
-        newState.watchedItems.length
-      );
       return {
         ...newState,
         isFetchingItems: false
@@ -87,7 +85,7 @@ export default function watchedReducer(state = initialState, action) {
     case watchedActionTypes.SET_WATCHED_UNWATCH_ITEM:
       const newPayload = newState.watchedItems.filter(
         item => item !== action.payload
-      );
+			);
       return {
         ...newState,
         watchedItems: newPayload
