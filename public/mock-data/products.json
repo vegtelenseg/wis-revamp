@@ -28,5 +28,15 @@
 		"price": 30,
 		"productBrand": "Star",
 		"productName": "bread"
+	},
+	{
+		"bestBefore": "16/01/20",
+		"checkoutRate": 10,
+		"inStock": 27,
+		"lng": 28.11274,
+		"lat": -26.137786,
+		"price": 30,
+		"productBrand": "StarBread",
+		"productName": "bread"
 	}
 ]
