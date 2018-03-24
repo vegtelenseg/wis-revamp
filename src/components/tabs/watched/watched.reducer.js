@@ -49,6 +49,18 @@ export const setAndUpdateWatchedItemsThunk = item => {
   };
 };
 
+export const setUnWatchedAndUpdateWatchedItemsThunk = item => {
+  return dispatch => {
+    dispatch(watchedActions.setUnWatchProduct(item));
+    dispatch(
+      navigationTabsActions.setNumberOfWatchedItems(
+        --initialState.watchedItems.length
+      )
+    );
+    return;
+  };
+};
+
 export default function watchedReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {

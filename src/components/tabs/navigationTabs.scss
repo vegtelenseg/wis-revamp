@@ -18,7 +18,24 @@
       svg {
         font-size: 1.8em;
         box-sizing: border-box;
-      }
+			}
+			.number-of-watched-items-container {
+				position: absolute;
+				margin: 0;
+				right: 8px;
+				top: -14px;
+				background: rgb(3, 83, 43);
+				padding: 3px;
+				border-radius: 50px;
+				width: 20px;
+				height: 20px;
+				.number-of-watched-items {
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
     }
     li:nth-child(4) {
       border-right: none;

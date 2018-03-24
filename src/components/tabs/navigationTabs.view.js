@@ -7,6 +7,7 @@ import WatchedViewContainer from './watched/watched.container';
 
 export default class NavigationTabsView extends React.Component {
   render() {
+		const { numberOfWatchedItems } = this.props;
     return (
       <Tabs className="tabs-container" renderActiveTabContentOnly={true}>
         <TabContent for="exploreView">
@@ -24,7 +25,9 @@ export default class NavigationTabsView extends React.Component {
             <i className="fas fa-home" />
           </TabLink>
           <TabLink activeClassName="active" className="tab" to="watchedView">
-            <span>{this.props.numberOfWatchedItems}</span>
+						<div className="number-of-watched-items-container">
+							<span className="number-of-watched-items">{numberOfWatchedItems}</span>
+						</div>
             <i className="fas fa-eye" />
           </TabLink>
           <TabLink activeClassName="active" className="tab" to="discountsView">

@@ -5,7 +5,6 @@ import SearchView from '../../search/search.container';
 export default class WatchedView extends React.Component {
   render() {
     const { watchedItems } = this.props;
-    console.log('W Items: ', watchedItems);
     return (
       <div className="watched-tab-panel">
         <SearchView activeTab="WATCHED" />
@@ -38,7 +37,7 @@ export default class WatchedView extends React.Component {
                 type="submit"
                 value="unwatch"
                 className="button"
-                onClick={() => this.props.setUnWatchProduct(watchedItem)}
+                onClick={() => this.props.setUnWatchedAndUpdateWatchedItemsThunk(watchedItem)}
               />
             </div>
           ))
