@@ -7,7 +7,7 @@ import MapMarker from '../mapMarker/mapMarker.container';
 
 export default class MapView extends Component {
   render() {
-		const { currentUserLocation } = this.props;
+		const { currentUserLocation, center } = this.props;
 		const coords = null;
 		if ("geolocation" in navigator) {
 			navigator.geolocation.getCurrentPosition(position => {
@@ -19,7 +19,7 @@ export default class MapView extends Component {
 			alert("Please switch on the location service of your device");
 		}
     return (
-      <Map center={coords || currentUserLocation} zoom={12}>
+      <Map center={coords || currentUserLocation} zoom={12} position={coords || center}>
         <TileLayer url={serviceUrl.tileLayerUrl} />
         {<MapMarker foundItems={this.props.foundItems} />}
       </Map>
