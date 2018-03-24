@@ -25,7 +25,10 @@ export default function navigationTabsReducer(state = initialState, action) {
     case actionTypes.SET_NUMBER_OF_WATCHED_ITEMS:
       return {
         ...state,
-        numberOfWatchedItems: action.payload
+        numberOfWatchedItems:
+          action.payload === 'INC'
+            ? ++state.numberOfWatchedItems
+            : --state.numberOfWatchedItems
       };
     default:
       return state;

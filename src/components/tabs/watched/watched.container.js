@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { watchedActions, setUnWatchedAndUpdateWatchedItemsThunk } from './watched.reducer';
+import {
+  watchedActions,
+  setUnWatchedAndUpdateWatchedItemsThunk
+} from './watched.reducer';
 import WatchedView from './watched.view';
 
 const mapStateToProps = ({ watchedReducer }) => ({
@@ -10,8 +13,8 @@ const mapStateToProps = ({ watchedReducer }) => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-			...watchedActions,
-			setUnWatchedAndUpdateWatchedItemsThunk
+      ...watchedActions,
+      setUnWatchedAndUpdateWatchedItemsThunk
     },
     dispatch
   );
