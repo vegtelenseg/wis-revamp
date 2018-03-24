@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { mapActions } from './map.reducer';
+import { getUserCurrentLocationThunk } from './map.reducer';
 import MapView from './map.view';
 
 const mapStateToProps = ({ mapReducer, exploreReducer }) => ({
@@ -10,7 +10,7 @@ const mapStateToProps = ({ mapReducer, exploreReducer }) => ({
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
-    ...mapActions
-  });
+		getUserCurrentLocationThunk
+  }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapView);
