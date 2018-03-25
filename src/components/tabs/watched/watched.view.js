@@ -4,12 +4,18 @@ import SearchView from '../../search/search.container';
 
 export default class WatchedView extends React.Component {
   render() {
-    const { watchedItems } = this.props;
+    const {
+      watchedItems,
+      filteredWatchedItems,
+      setUnWatchedAndUpdateWatchedItemsThunk
+    } = this.props;
+    const itemsToMap =
+      filteredWatchedItems.length > 0 ? filteredWatchedItems : watchedItems;
     return (
       <div className="watched-tab-panel">
         <SearchView activeTab="WATCHED" />
-        {watchedItems.length > 0 ? (
-          watchedItems.map((watchedItem, idx) => (
+        {itemsToMap.length > 0 ? (
+          itemsToMap.map((watchedItem, idx) => (
             <div key={idx} className="watched-item-container">
               <ul className="watched-item">
                 <li>
@@ -38,7 +44,7 @@ export default class WatchedView extends React.Component {
                 value="unwatch"
                 className="button"
                 onClick={() =>
-                  this.props.setUnWatchedAndUpdateWatchedItemsThunk(watchedItem)
+                  setUnWatchedAndUpdateWatchedItemsThunk(watchedItem)
                 }
               />
             </div>

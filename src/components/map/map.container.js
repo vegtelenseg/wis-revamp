@@ -9,8 +9,11 @@ const mapStateToProps = ({ mapReducer, exploreReducer }) => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-		getUserCurrentLocationThunk
-  }, dispatch);
+  bindActionCreators(
+    {
+      getUserCurrentLocationThunk
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapView);
