@@ -6,12 +6,11 @@ import PropTypes from 'prop-types';
 import MapMarker from '../mapMarker/mapMarker.container';
 
 export default class MapView extends Component {
-
-	componentDidMount() {
-		this.props.getUserCurrentLocationThunk();
-	}
+  componentDidMount() {
+    this.props.getUserCurrentLocationThunk();
+  }
   render() {
-		const { foundItems, currentUserLocation } = this.props;
+    const { foundItems, currentUserLocation } = this.props;
     return (
       <Map center={currentUserLocation} zoom={12}>
         <TileLayer url={serviceUrl.tileLayerUrl} />
@@ -24,6 +23,6 @@ export default class MapView extends Component {
 Map.propTypes = {
   center: PropTypes.array.isRequired,
   zoom: PropTypes.number.isRequired,
-	foundItems: PropTypes.arrayOf(Object),
-	currentUserLocation: PropTypes.array
+  foundItems: PropTypes.arrayOf(Object),
+  currentUserLocation: PropTypes.array
 };
