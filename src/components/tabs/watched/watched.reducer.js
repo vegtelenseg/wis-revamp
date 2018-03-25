@@ -1,17 +1,20 @@
+import _ from 'lodash';
 import createAction from '../../../helpers/actionCreator';
 import { getProductByNameFromDB } from '../../../services/services';
 import { navigationTabsActions } from '../navigationTabs.reducer';
 const initialState = {
   searchQuery: '',
   isFetchingItems: false,
-  watchedItems: []
+  watchedItems: [],
+  filteredWatchedItems: []
 };
 
 const watchedActionTypes = {
   SET_WATCHED_ITEM_NAME: 'SET_WATCHED_ITEM_NAME',
   SET_WATCHED_FOUND_ITEMS: 'SET_WATCHED_FOUND_ITEMS',
   SET_WATCHED_IS_FETCHED: 'SET_WATCHED_IS_FETCHED',
-  SET_WATCHED_UNWATCH_ITEM: 'SET_WATCHED_UNWATCH_ITEM'
+  SET_WATCHED_UNWATCH_ITEM: 'SET_WATCHED_UNWATCH_ITEM',
+  SET_FILTERED_WATCHED_ITEMS: 'SET_FILTERED_WATCHED_ITEMS'
 };
 
 export const watchedActions = {
@@ -21,20 +24,18 @@ export const watchedActions = {
     createAction(watchedActionTypes.SET_WATCHED_FOUND_ITEMS, product),
   setUnWatchProduct: product =>
     createAction(watchedActionTypes.SET_WATCHED_UNWATCH_ITEM, product),
+  setFilteredWatchedItems: match =>
+    createAction(watchedActionTypes.SET_FILTERED_WATCHED_ITEMS, match),
   setIsFetching: predicate =>
     createAction(watchedActionTypes.SET_WATCHED_IS_FETCHED, predicate)
 };
 
-export const fetchWatchedItemsThunk = name => (
-  dispatch,
-  getState
-) => {
-  if (!getState().isFetchingItems) {
-    dispatch(watchedActions.setIsFetching(true));
-    return getProductByNameFromDB(name).then(product =>
-      dispatch(watchedActions.setWatchedProduct(product))
-    );
-  }
+export const fetchWatchedItemsThunk = name => (dispatch, getState) => {
+  const { watchedItems } = getState().watchedReducer;
+  const itemsMatching = _.filter(watchedItems, item =>
+    _.includes(item.productBrand.toLowerCase(), name.toLowerCase())
+  );
+  dispatch(watchedActions.setFilteredWatchedItems(itemsMatching));
 };
 
 export const setAndUpdateWatchedItemsThunk = item => {
@@ -86,8 +87,14 @@ export default function watchedReducer(state = initialState, action) {
       );
       return (newState = {
         ...newState,
-        watchedItems: newPayload
+        watchedItems: newPayload,
+        filteredWatchedItems: newPayload
       });
+    case watchedActionTypes.SET_FILTERED_WATCHED_ITEMS:
+      return {
+        ...state,
+        filteredWatchedItems: action.payload
+      };
     default:
       return state;
   }
