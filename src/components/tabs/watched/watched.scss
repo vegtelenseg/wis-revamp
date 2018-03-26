@@ -13,7 +13,7 @@
       left: 30px;
       right: 30px;
       z-index: -1;
-      @include box-shadow(0, 1px, 80px, 13px, #aaaeb1);
+      box-shadow: 0 1px 80px 13px #aaaeb1;
       border-radius: 100px/50px;
     }
     .watched-item {
@@ -36,7 +36,7 @@
         position: relative;
         width: 100%;
         span {
-          border: 1px solid $black;
+          border: 1px solid black;
           border-radius: 50px;
           position: relative;
           display: inline-block;
@@ -55,25 +55,25 @@
           opacity: 0.34;
         }
         .red {
-          background: $red;
-          background-image: radial-gradient($brown, transparent);
-          border: solid 1px $brown;
-          @include box-shadow(0, 0, 15px, $red, inset);
-          animation: 5s $red infinite;
+          background: red;
+          background-image: radial-gradient(brown, transparent);
+          border: solid 1px brown;
+          box-shadow: 0 0 15px red inset;
+          animation: 5s red infinite;
         }
         .yellow {
-          background: $yellow;
-          background-image: radial-gradient($orange, transparent);
-          border: solid 2px $orange;
-          @include box-shadow(0, 0, 15px, $yellow, inset);
-          animation: 5s $yellow infinite;
+          background: yellow;
+          background-image: radial-gradient(orange, transparent);
+          border: solid 2px orange;
+          box-shadow: 0 0 15px yellow inset;
+          animation: 5s yellow infinite;
         }
         .green {
-          background: $green;
-          background-image: radial-gradient($lime, transparent);
-          border: solid 2px $lime;
-          @include box-shadow(0, 0, 15px, $lime, inset);
-          animation: 5s $green infinite;
+          background: green;
+          background-image: radial-gradient(lime, transparent);
+          border: solid 2px lime;
+          box-shadow: 0 0 15px lime inset;
+          animation: 5s green infinite;
           opacity: 1;
         }
       }
