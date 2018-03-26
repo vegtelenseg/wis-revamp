@@ -40,6 +40,13 @@ export default class WatchedView extends React.Component {
                 className="button"
                 onClick={() => this.props.setUnWatchProduct(watchedItem)}
               />
+              <div className="traffic-lights-container">
+                <div className="traffic-lights">
+                  <span className="traffic-light red" />
+                  <span className="traffic-light yellow" />
+                  <span className="traffic-light green" />
+                </div>
+              </div>
             </div>
           ))
         ) : (
