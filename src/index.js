@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 
 import registerServiceWorker from './registerServiceWorker';
 
-import './assets/index.css';
+import './index.css';
 import App from './components/app/App';
 import rootReducer from './rootReducer';
 
