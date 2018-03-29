@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import createAction from '../../../helpers/actionCreator';
-import { getProductByNameFromDB } from '../../../services/services';
 import { navigationTabsActions } from '../navigationTabs.reducer';
 const initialState = {
   searchQuery: '',

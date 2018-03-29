@@ -23,7 +23,7 @@
     }
     .button {
       position: relative;
-      left: 8.5%;
+      left: 2.6em;
       transform: translateX(-8.5%);
       margin: 0.5em 0;
     }
@@ -52,7 +52,7 @@
         .green {
           background-size: 5px 5px;
           border-radius: 50%;
-          opacity: 0.34;
+          opacity: 1;
         }
         .red {
           background: red;
@@ -74,7 +74,6 @@
           border: solid 2px lime;
           box-shadow: 0 0 15px lime inset;
           animation: 5s green infinite;
-          opacity: 1;
         }
       }
     }
