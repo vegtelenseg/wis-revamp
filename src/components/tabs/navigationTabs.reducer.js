@@ -1,15 +1,13 @@
+import createAction from '../../helpers/actionCreator';
+
 export const actionTypes = {
   NAVIGATE_TO: 'NAVIGATE_TO',
   SET_NUMBER_OF_WATCHED_ITEMS: 'SET_NUMBER_OF_WATCHED_ITEMS'
 };
 
+
 export const navigationTabsActions = {
-  setNumberOfWatchedItems: number => (dispatch, getState) => {
-    return dispatch({
-      type: actionTypes.SET_NUMBER_OF_WATCHED_ITEMS,
-      payload: number
-    });
-  }
+  setNumberOfWatchedItems: specifier => createAction(actionTypes.SET_NUMBER_OF_WATCHED_ITEMS, specifier)
 };
 
 const initialState = {

@@ -7,7 +7,8 @@
 		"lat": -26.107686,
 		"price": 15,
 		"productBrand": "Lads",
-		"productName": "bread"
+		"productName": "bread",
+		"isWatched": false
 	},
 	{
 		"bestBefore": "9/11/19",
@@ -17,7 +18,8 @@
 		"lat": -26.157786,
 		"price": 25,
 		"productBrand": "TigerBrand",
-		"productName": "bread"
+		"productName": "bread",
+		"isWatched": false
 	},
 	{
 		"bestBefore": "16/01/20",
@@ -27,7 +29,8 @@
 		"lat": -26.127786,
 		"price": 30,
 		"productBrand": "Star",
-		"productName": "bread"
+		"productName": "bread",
+		"isWatched": false
 	},
 	{
 		"bestBefore": "16/01/20",
@@ -37,6 +40,7 @@
 		"lat": -26.137786,
 		"price": 30,
 		"productBrand": "StarBread",
-		"productName": "bread"
+		"productName": "bread",
+		"isWatched": false
 	}
 ]
