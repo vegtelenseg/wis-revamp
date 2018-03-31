@@ -1,9 +1,4 @@
-.product-items-container {
-  position: absolute;
-  background: red;
-  display: none;
-}
-
-.show-item-info {
-  display: block;
+.popup {
+  position: relative;
+  z-index: 9999;
 }

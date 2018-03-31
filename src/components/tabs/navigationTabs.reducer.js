@@ -5,9 +5,9 @@ export const actionTypes = {
   SET_NUMBER_OF_WATCHED_ITEMS: 'SET_NUMBER_OF_WATCHED_ITEMS'
 };
 
-
 export const navigationTabsActions = {
-  setNumberOfWatchedItems: specifier => createAction(actionTypes.SET_NUMBER_OF_WATCHED_ITEMS, specifier)
+  setNumberOfWatchedItems: numberOfWatchedItems =>
+    createAction(actionTypes.SET_NUMBER_OF_WATCHED_ITEMS, numberOfWatchedItems)
 };
 
 const initialState = {
@@ -23,10 +23,7 @@ export default function navigationTabsReducer(state = initialState, action) {
     case actionTypes.SET_NUMBER_OF_WATCHED_ITEMS:
       return {
         ...state,
-        numberOfWatchedItems:
-          action.payload === 'INC'
-            ? ++state.numberOfWatchedItems
-            : --state.numberOfWatchedItems
+        numberOfWatchedItems: action.payload
       };
     default:
       return state;
