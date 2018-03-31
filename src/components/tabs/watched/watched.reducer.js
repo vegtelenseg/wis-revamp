@@ -3,7 +3,6 @@ import { includes, filter } from 'lodash';
 import itemExists from '../../../helpers/arraysUtility';
 import createAction from '../../../helpers/actionCreator';
 import { navigationTabsActions } from '../navigationTabs.reducer';
-import { mapMarkerActions } from '../../mapMarker/mapMarker.reducer';
 
 const initialState = {
   searchQuery: '',
@@ -41,28 +40,30 @@ export const fetchWatchedItemsThunk = name => (dispatch, getState) => {
   dispatch(watchedActions.setFilteredWatchedItems(itemsMatching));
 };
 
-export const setAndUpdateWatchedItemsThunk = element => (dispatch, getState) => {
-	const { watchedItems } = getState().watchedReducer;
-	if (itemExists(watchedItems, element)) {
-		alert("Already Watching this ite :)");
-	}
-	else {
-		dispatch(watchedActions.setWatchedProduct(element));
-		//dispatch(mapMarkerActions.setButtonText(element))
-		const { numberOfWatchedItems } = getState().navigationTabsReducer;
-		if (numberOfWatchedItems < watchedItems.length) {
-			dispatch(navigationTabsActions.setNumberOfWatchedItems('INC'));
-		}
-	}
-
-
+export const setAndUpdateWatchedItemsThunk = element => (
+  dispatch,
+  getState
+) => {
+  const { watchedItems } = getState().watchedReducer;
+  const itemIsWatched = itemExists(watchedItems, element);
+  if (!itemIsWatched) {
+    dispatch(watchedActions.setWatchedProduct(element));
+    const { numberOfWatchedItems } = getState().navigationTabsReducer;
+    if (numberOfWatchedItems < watchedItems.length)
+      dispatch(
+        navigationTabsActions.setNumberOfWatchedItems(watchedItems.length)
+      );
+  } else alert('Already Watching this item :)');
   return;
 };
 
-export const setUnWatchedAndUpdateWatchedItemsThunk = item => {
-  return dispatch => {
-    dispatch(watchedActions.setUnWatchProduct(item));
-    dispatch(navigationTabsActions.setNumberOfWatchedItems('DEC'));
+export const setUnWatchedAndUpdateWatchedItemsThunk = element => {
+  return (dispatch, getState) => {
+    dispatch(watchedActions.setUnWatchProduct(element));
+    const { watchedItems } = getState().watchedReducer;
+    dispatch(
+      navigationTabsActions.setNumberOfWatchedItems(watchedItems.length)
+    );
     return;
   };
 };
@@ -81,10 +82,10 @@ export default function watchedReducer(state = initialState, action) {
         isFetchingItems: action.payload
       });
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
-			const element = action.payload;
-			element.isWatched = true;
-			console.log("The element: ", element);
-			newState.watchedItems.push(element)
+      const element = action.payload;
+      element.isWatched = true;
+      console.log('The element: ', element);
+      newState.watchedItems.push(element);
       return (newState = {
         ...newState,
         isFetchingItems: false
