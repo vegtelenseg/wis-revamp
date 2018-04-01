@@ -1,13 +1,16 @@
 import createAction from '../../helpers/actionCreator';
 
-export const actionTypes = {
+export const navigationTabsActionTypes = {
   NAVIGATE_TO: 'NAVIGATE_TO',
   SET_NUMBER_OF_WATCHED_ITEMS: 'SET_NUMBER_OF_WATCHED_ITEMS'
 };
 
 export const navigationTabsActions = {
   setNumberOfWatchedItems: numberOfWatchedItems =>
-    createAction(actionTypes.SET_NUMBER_OF_WATCHED_ITEMS, numberOfWatchedItems)
+    createAction(
+      navigationTabsActionTypes.SET_NUMBER_OF_WATCHED_ITEMS,
+      numberOfWatchedItems
+    )
 };
 
 const initialState = {
@@ -16,11 +19,11 @@ const initialState = {
 
 export default function navigationTabsReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.NAVIGATE_TO:
+    case navigationTabsActionTypes.NAVIGATE_TO:
       return {
         ...state
       };
-    case actionTypes.SET_NUMBER_OF_WATCHED_ITEMS:
+    case navigationTabsActionTypes.SET_NUMBER_OF_WATCHED_ITEMS:
       return {
         ...state,
         numberOfWatchedItems: action.payload

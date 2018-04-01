@@ -23,6 +23,7 @@ export default class MapView extends Component {
           <MapMarker
             foundItems={foundItems}
             numberOfWatchedItems={numberOfWatchedItems}
+            centerOfCircle={currentUserLocation}
           />
         }
       </Map>

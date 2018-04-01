@@ -50,6 +50,9 @@
     }
     .active-tab {
       color: #2780ca;
+      .number-of-watched-items-container {
+        border: 1px solid #2780ca;
+      }
     }
   }
   .tab-panel {
