@@ -8,9 +8,16 @@ export default class MapMarker extends React.Component {
     const { foundItems, numberOfWatchedItems } = this.props;
     return this.renderMarkers(foundItems, numberOfWatchedItems);
   }
+  mutateLatLng = () => {
+    const { centerOfCircle } = this.props;
+    const x = centerOfCircle[0];
+    const y = centerOfCircle[1];
+    const offSet = Math.random() / 220;
+    return [x + offSet / Math.random(), y + offSet / Math.random()];
+  };
   renderMarkers = (foundItems, numberOfWatchedItems) =>
     foundItems.map((item, idx) => {
-      const position = [item.lat, item.lng];
+      const position = this.mutateLatLng();
       return (
         <Marker key={idx + Math.random()} position={position}>
           <InfoWindow
