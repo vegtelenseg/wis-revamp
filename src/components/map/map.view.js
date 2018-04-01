@@ -3,7 +3,7 @@ import { Map, TileLayer } from 'react-leaflet';
 import serviceUrl from '../../services/servicesUrls';
 
 import PropTypes from 'prop-types';
-import MapMarker from '../mapMarker/mapMarker.container';
+import MapMarker from '../mapMarker/mapMarker.view';
 
 export default class MapView extends Component {
   componentDidMount() {
@@ -17,7 +17,7 @@ export default class MapView extends Component {
       numberOfWatchedItems
     } = this.props;
     return (
-      <Map center={currentUserLocation} zoom={zoom}>
+      <Map center={currentUserLocation} zoom={zoom} zoomControl={false}>
         <TileLayer url={serviceUrl.tileLayerUrl} />
         {
           <MapMarker
