@@ -5,7 +5,7 @@ import InfoWindow from '../product/product.container';
 
 export default class MapMarker extends React.Component {
   render() {
-    const { foundItems, numberOfWatchedItems} = this.props;
+    const { foundItems, numberOfWatchedItems } = this.props;
     return this.renderMarkers(foundItems, numberOfWatchedItems);
   }
   renderMarkers = (foundItems, numberOfWatchedItems) =>
@@ -15,8 +15,8 @@ export default class MapMarker extends React.Component {
         <Marker key={idx + Math.random()} position={position}>
           <InfoWindow
             item={item}
-						buttonText={item.isWatched ? 'unwatch' : 'watch'}
-						numberOfWatchedItems={numberOfWatchedItems}
+            buttonText={item.isWatched ? 'unwatch' : 'watch'}
+            numberOfWatchedItems={numberOfWatchedItems}
           />
         </Marker>
       );

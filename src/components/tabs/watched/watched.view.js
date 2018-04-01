@@ -3,12 +3,11 @@ import React from 'react';
 import SearchView from '../../search/search.container';
 
 export default class WatchedView extends React.Component {
-
   render() {
     const {
       watchedItems,
       filteredWatchedItems,
-      setUnWatchedAndUpdateWatchedItemsThunk,
+      setUnWatchedAndUpdateWatchedItemsThunk
     } = this.props;
     const itemsToMap =
       filteredWatchedItems.length > 0 ? filteredWatchedItems : watchedItems;

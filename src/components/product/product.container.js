@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import { productActions } from './product.reducer';
 import {
   watchedActions,
-  setAndUpdateWatchedItemsThunk
+  setAndUpdateWatchedItemsThunk,
+  setUnWatchedAndUpdateWatchedItemsThunk
 } from '../tabs/watched/watched.reducer';
 import Product from './product.view';
 
@@ -18,7 +19,8 @@ const mapDispatchToProps = dispatch =>
     {
       ...productActions,
       ...watchedActions,
-      setAndUpdateWatchedItemsThunk
+      setAndUpdateWatchedItemsThunk,
+      setUnWatchedAndUpdateWatchedItemsThunk
     },
     dispatch
   );

@@ -90,6 +90,7 @@ export default function watchedReducer(state = initialState, action) {
         isFetchingItems: false
       });
     case watchedActionTypes.SET_WATCHED_UNWATCH_ITEM:
+      action.payload.isWatched = false;
       const newPayload = newState.watchedItems.filter(
         item => item !== action.payload
       );
