@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import { Popup } from 'react-leaflet';
 
 export default class Product extends React.Component {
+  setWatchUnwatch = (item, buttonText) => {
+    if (buttonText.length > 0) {
+      if (buttonText.toLowerCase() === 'watch') {
+        this.props.setAndUpdateWatchedItemsThunk(item);
+      } else {
+        this.props.setUnWatchedAndUpdateWatchedItemsThunk(item);
+      }
+    }
+  };
   render() {
-    const { item, setAndUpdateWatchedItemsThunk, buttonText } = this.props;
+    const { item, buttonText } = this.props;
     return (
       <Popup className="popup">
         <div>
@@ -24,7 +33,7 @@ export default class Product extends React.Component {
             type="submit"
             value={buttonText}
             className="watch"
-            onClick={() => setAndUpdateWatchedItemsThunk(item)}
+            onClick={() => this.setWatchUnwatch(item, buttonText)}
           />
         </div>
       </Popup>
