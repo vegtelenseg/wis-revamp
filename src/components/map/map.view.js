@@ -10,11 +10,11 @@ export default class MapView extends Component {
     this.props.getUserCurrentLocationThunk();
   }
   render() {
-    const { foundItems, currentUserLocation, zoom } = this.props;
+    const { foundItems, currentUserLocation, zoom, numberOfWatchedItems } = this.props;
     return (
       <Map center={currentUserLocation} zoom={zoom}>
         <TileLayer url={serviceUrl.tileLayerUrl} />
-        {<MapMarker foundItems={foundItems} />}
+        {<MapMarker foundItems={foundItems} numberOfWatchedItems={numberOfWatchedItems}/>}
       </Map>
     );
   }

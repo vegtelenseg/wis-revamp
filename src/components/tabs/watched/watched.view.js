@@ -3,19 +3,15 @@ import React from 'react';
 import SearchView from '../../search/search.container';
 
 export default class WatchedView extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    console.log('WatchedView - Component Will Receive Props: ', nextProps);
-  }
+
   render() {
     const {
       watchedItems,
       filteredWatchedItems,
       setUnWatchedAndUpdateWatchedItemsThunk,
-      numberOfWatchedItems
     } = this.props;
     const itemsToMap =
       filteredWatchedItems.length > 0 ? filteredWatchedItems : watchedItems;
-    console.log('WatchedVew: ', this.props);
     return (
       <div className="watched-tab-panel">
         <SearchView activeTab="WATCHED" />

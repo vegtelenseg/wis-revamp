@@ -4,14 +4,12 @@ import Map from '../../map/map.container';
 import SearchView from '../../search/search.container';
 
 export default class ExploreView extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    console.log('ExploreView - Component Will Receive Props: ', nextProps);
-  }
   render() {
+		const {numberOfWatchedItems} = this.props;
     return (
       <div id="explore-tab">
         <SearchView activeTab="EXPLORE" />
-        <Map />
+        <Map numberOfWatchedItems={numberOfWatchedItems}/>
       </div>
     );
   }
