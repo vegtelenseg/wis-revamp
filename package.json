@@ -27,7 +27,7 @@
     "test-ci": "CI=true react-scripts test --env=jsdom --ci",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/assets/ -o src/ --watch --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "prettier": "prettier --write --tab-width=2 --single-quote=true \"src/**/*.{js,scss}\""
   },

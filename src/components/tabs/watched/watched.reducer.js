@@ -84,7 +84,6 @@ export default function watchedReducer(state = initialState, action) {
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
       const element = action.payload;
       element.isWatched = true;
-      console.log('The element: ', element);
       newState.watchedItems.push(element);
       return (newState = {
         ...newState,
