@@ -26,7 +26,10 @@ export default class NavigationTabsView extends React.Component {
             className="tab"
             to="exploreView"
           >
-            <i className="fas fa-home" />
+            <div className="tab-indicator">
+              <i className="fas fa-home" />
+              <span>explore</span>
+            </div>
           </TabLink>
           <TabLink
             activeClassName="active-tab"
@@ -38,21 +41,30 @@ export default class NavigationTabsView extends React.Component {
                 {numberOfWatchedItems}
               </span>
             </div>
-            <i className="fas fa-eye" />
+            <div className="tab-indicator">
+              <i className="fas fa-eye" />
+              <span>watched</span>
+            </div>
           </TabLink>
           <TabLink
             activeClassName="active-tab"
             className="tab"
             to="discountsView"
           >
-            <i className="fas fa-tags" />
+            <div className="tab-indicator">
+              <i className="fas fa-tags" />
+              <span>discounts</span>
+            </div>
           </TabLink>
           <TabLink
             activeClassName="active-tab"
             className="tab"
             to="improvementsView"
           >
-            <i className="fas fa-chart-line" />
+            <div className="tab-indicator">
+              <i className="fas fa-chart-line" />
+              <span>suggestions</span>
+            </div>
           </TabLink>
         </div>
       </Tabs>
