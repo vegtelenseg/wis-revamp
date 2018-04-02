@@ -13,7 +13,7 @@ export default class MapMarker extends React.Component {
     const x = centerOfCircle[0];
     const y = centerOfCircle[1];
     const offSet = Math.random() / 220;
-    return [x + offSet / Math.random(), y + offSet / Math.random()];
+    return [x - offSet, y - offSet];
   };
   renderMarkers = (foundItems, numberOfWatchedItems) =>
     foundItems.map((item, idx) => {
