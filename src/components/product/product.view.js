@@ -15,24 +15,24 @@ export default class Product extends React.Component {
   render() {
     const { item, buttonText } = this.props;
     return (
-      <Popup className="popup">
-        <div>
-          <span>
+      <Popup className="popup-container">
+        <div className="popup">
+          <span className="popup-item">
             <strong>Name:</strong> {item.productName}
           </span>
-          <span>
+          <span className="popup-item">
             <strong>Brand:</strong> {item.productBrand}
           </span>
-          <span>
+          <span className="popup-item">
             <strong>In Stock:</strong> {item.inStock}
           </span>
-          <span>
+          <span className="popup-item">
             <strong>Checkout Rate:</strong> {item.checkoutRate}
           </span>
           <input
             type="submit"
             value={buttonText}
-            className="watch"
+            className="watchBtn"
             onClick={() => this.setWatchUnwatch(item, buttonText)}
           />
         </div>
