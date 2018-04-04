@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Popup } from 'react-leaflet';
+import io from 'socket.io-client';
+
+const socket = io.connect('http://localhost:4300');
 
 export default class Product extends React.Component {
   setWatchUnwatch = (item, buttonText) => {
     if (buttonText.length > 0) {
-      if (buttonText.toLowerCase() === 'watch') {
+      if (buttonText.toLowerCase() === 'watch')
         this.props.setAndUpdateWatchedItemsThunk(item);
-      } else {
-        this.props.setUnWatchedAndUpdateWatchedItemsThunk(item);
-      }
+      else this.props.setUnWatchedAndUpdateWatchedItemsThunk(item);
     }
   };
+  componentDidMount() {
+    socket.on('product changed', data => {
+      console.log('Changes: ', data.productId);
+      this.props.setItemCheckoutRate(data.productId);
+    });
+  }
   render() {
     const { item, buttonText } = this.props;
     return (
@@ -24,10 +31,13 @@ export default class Product extends React.Component {
             <strong>Brand:</strong> {item.productBrand}
           </span>
           <span className="popup-item">
-            <strong>In Stock:</strong> {item.inStock}
+            <strong>In Stock:</strong> {item.productQty}
           </span>
           <span className="popup-item">
-            <strong>Checkout Rate:</strong> {item.checkoutRate}
+            <strong>Price: </strong>R{item.productCheckoutRate}
+          </span>
+          <span className="popup-item">
+            <strong>Checkout Rate:</strong> {item.productCheckoutRate}
           </span>
           <input
             type="submit"

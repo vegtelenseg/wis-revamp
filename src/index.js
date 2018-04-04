@@ -6,11 +6,11 @@ import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './client/registerServiceWorker';
 
-import './assets/index.css';
-import App from './components/app/App';
-import rootReducer from './rootReducer';
+import './client/assets/index.css';
+import App from './client/components/app/App';
+import rootReducer from './client/rootReducer';
 
 const store = createStore(
   rootReducer,

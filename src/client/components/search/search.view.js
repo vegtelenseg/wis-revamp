@@ -5,16 +5,18 @@ import PropTypes from 'prop-types';
 export default class SearchView extends React.Component {
   isEnter = e => {
     if (e.key === 'Enter' && e.target.value.length > 0) {
-      if (this.props.activeTab !== 'WATCHED') {
-        this.props.setItemName(e.target.value);
-        this.props.fetchItemsThunk(this.props.searchQuery, this.props);
+      const { activeTab, setItemName, fetchItemsThunk } = this.props;
+      if (activeTab !== 'WATCHED') {
+        setItemName(e.target.value);
+        fetchItemsThunk(e.target.value, this.props);
       }
     }
     return;
   };
   filter(e) {
-    if (this.props.activeTab === 'WATCHED') {
-      this.props.fetchItemsThunk(e.target.value, this.props);
+    const { activeTab, fetchItemsThunk } = this.props;
+    if (activeTab === 'WATCHED') {
+      fetchItemsThunk(e.target.value, this.props);
     }
     return;
   }

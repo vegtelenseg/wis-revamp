@@ -3,7 +3,7 @@ import contentUrls from './servicesUrls';
 
 export const getProductByNameFromDB = name =>
   axios
-    .get(contentUrls.mockDataUrl)
+    .get(contentUrls.wistoreServer + `?q=${name}`)
     .then(products => products.data)
     .catch(err => {
       console.error('Could not retrieve products: ', err);
