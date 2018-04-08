@@ -4,9 +4,8 @@ import contentUrls from './servicesUrls';
 export const getProductByNameFromDB = name => {
 	const options = {
 		method: 'GET',
-		url: contentUrls.wistoreServer + `?q=${name}`,
+		url: `${contentUrls.wistoreServer}?q=${name}`,
 		headers: {
-			'Access-Control-Allow-Origin': '*',
 			'Content-Type': 'application/json'
 		}
 	}

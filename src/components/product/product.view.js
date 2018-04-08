@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Popup } from 'react-leaflet';
 import io from 'socket.io-client';
+import serviceUrls from '../../services/servicesUrls';
 
-const socket = io.connect('http://localhost:4300');
+const socket = io.connect(serviceUrls.wistoreServer);
+console.log("Service Url: ", serviceUrls.wistoreServer);
 
 export default class Product extends React.Component {
   setWatchUnwatch = (item, buttonText) => {
@@ -15,7 +17,7 @@ export default class Product extends React.Component {
   };
   componentDidMount() {
     socket.on('product changed', data => {
-      console.log('Changes: ', data.productId);
+      console.log('Changes: ', data);
       this.props.setItemCheckoutRate(data.productId);
     });
   }
