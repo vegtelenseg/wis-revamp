@@ -1,5 +1,5 @@
 import { getDiscountsByNameFromDB } from '../../../services/services';
-import mockData from '../../../../../public/mock-data/products.json';
+import mockData from '../../../../public/mock-data/products.json';
 
 import watchedReducer, { watchedActions } from './watched.reducer';
 

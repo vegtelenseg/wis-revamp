@@ -5,7 +5,7 @@ import searchReducer, {
   fetchItemsThunk,
   searchActions
 } from './search.reducer';
-import mockData from '../../../../public/mock-data/products.json';
+import mockData from '../../../public/mock-data/products.json';
 
 describe('Search Reducer Tests', () => {
   const initialState = {

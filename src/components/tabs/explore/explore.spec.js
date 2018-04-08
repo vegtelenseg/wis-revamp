@@ -5,7 +5,7 @@ import exploreReducer, {
   fetchExploreItemsThunk,
   exploreActions
 } from './explore.reducer';
-import mockData from '../../../../../public/mock-data/products.json';
+import mockData from '../../../../public/mock-data/products.json';
 
 describe('Explore Reducer Tests', () => {
   const initialState = {
