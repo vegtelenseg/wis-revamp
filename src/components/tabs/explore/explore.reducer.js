@@ -23,6 +23,7 @@ export const exploreActions = {
 };
 
 export const fetchExploreItemsThunk = name => (dispatch, getState) => {
+  console.log('Search name: ', name);
   if (!getState().isFetchingItems) {
     dispatch(exploreActions.setIsFetching(true));
     return getProductByNameFromDB(name).then(product =>

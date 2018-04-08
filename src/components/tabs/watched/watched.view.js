@@ -28,15 +28,15 @@ export default class WatchedView extends React.Component {
                 </li>
                 <li>
                   <strong>In Stock: </strong>
-                  {watchedItem.inStock}
+                  {watchedItem.productQty}
                 </li>
                 <li>
                   <strong>Checkout Rate: </strong>
-                  {watchedItem.checkoutRate}
+                  {watchedItem.productCheckoutRate}
                 </li>
                 <li>
                   <strong>Best Before: </strong>
-                  {watchedItem.bestBefore}
+                  {watchedItem.productBestBefore}
                 </li>
               </ul>
               <input

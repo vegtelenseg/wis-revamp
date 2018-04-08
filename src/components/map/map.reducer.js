@@ -3,7 +3,7 @@ import createAction from '../../helpers/actionCreator';
 const initialState = {
   currentUserLocation: [0, 0],
   center: { lat: 0, lng: 0 },
-  zoom: 13.5,
+  zoom: 14.4,
   markerInfo: []
 };
 

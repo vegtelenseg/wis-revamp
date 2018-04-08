@@ -15,7 +15,7 @@ export default class MapMarker extends React.Component {
     const deltaXPow = Math.pow(centerX, 2);
     const deltaYPow = Math.pow(centerY, 2);
     const dist = Math.sqrt(deltaXPow + deltaYPow);
-    const radius = dist / 9000;
+    const radius = dist / 4000;
     const x = centerX - radius * Math.cos(idx);
     const y = centerY - radius * Math.sin(idx);
     return [x, y];
@@ -23,6 +23,9 @@ export default class MapMarker extends React.Component {
   renderMarkers = (foundItems, numberOfWatchedItems) =>
     foundItems.map((item, idx) => {
       const position = this.mutateLatLng(idx);
+      /*const svgIcon = window.L.icon({
+        iconUrl: require('../../assets/marker.svg'),
+      })*/
       return (
         <Marker key={idx + Math.random()} position={position}>
           <InfoWindow
