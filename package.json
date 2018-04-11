@@ -23,12 +23,12 @@
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm-run-all build-css build-js",
-    "start-js": "react-scripts start",
-    "build-js": "cross-env NODE_ENV=production react-scripts build",
+    "start-js": "./node_modules/.bin/cross-env NODE_ENV=production react-scripts start",
+    "build-js": "./node_modules/.bin/cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test-ci": "CI=true react-scripts test --env=jsdom --ci",
     "eject": "react-scripts eject",
-    "build-css": "node-sass-chokidar src/ -o src/",
+    "build-css": "node-sass-chokidar src/ -o src/ --quiet",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "prettier": "prettier --write --tab-width=2 --single-quote=true \"src/**/*.{js,scss}\""
