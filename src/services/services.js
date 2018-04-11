@@ -9,14 +9,14 @@ export const getProductByNameFromDB = name => {
 			'Content-Type': 'application/json'
 		}
 	}
-  return axios(options)
-    .then(products => products.data)
-    .catch(err => {
-      console.error('Could not retrieve products: ', err);
-    });
-	}
+	return axios(options)
+		.then(products => products.data)
+		.catch(err => {
+			console.error('Could not retrieve products: ', err);
+		});
+}
 export const getProductByNameFromList = (name, list) =>
-  list.filter(item => item !== name);
+	list.filter(item => item !== name);
 
 export const getDiscountsByNameFromDB = name =>
-  getProductByNameFromDB(name).then(product => product.data);
+	getProductByNameFromDB(name).then(product => product.data);
