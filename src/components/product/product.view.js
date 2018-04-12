@@ -11,24 +11,33 @@ export default class Product extends React.Component {
     }
   };
   render() {
-    const { item, buttonText } = this.props;
+    const { item, buttonText, changedItem } = this.props;
+    const {
+      productBrand,
+      productName,
+      productCheckoutRate,
+      price,
+      productQty
+    } = { ...changedItem };
     return (
       <Popup className="popup-container">
         <div className="popup">
           <span className="popup-item">
-            <strong>Name:</strong> {item.productName}
+            <strong>Name:</strong> {productName || item.productName}
           </span>
           <span className="popup-item">
-            <strong>Brand:</strong> {item.productBrand}
+            <strong>Brand:</strong> {productBrand || item.productBrand}
           </span>
           <span className="popup-item">
-            <strong>In Stock:</strong> {this.props.inStock || item.productQty}
+            <strong>In Stock:</strong>
+            {productQty || item.productQty}
           </span>
           <span className="popup-item">
-            <strong>Price: </strong>R{this.props.price || item.price}
+            <strong>Price: </strong>R{price || item.price}
           </span>
           <span className="popup-item">
-            <strong>Checkout Rate:</strong> {this.props.checkoutRate || item.productCheckoutRate}
+            <strong>Checkout Rate:</strong>
+            {productCheckoutRate || item.productCheckoutRate}
           </span>
           <input
             type="submit"

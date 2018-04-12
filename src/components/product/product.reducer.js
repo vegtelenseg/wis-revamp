@@ -24,10 +24,10 @@ export const productActions = {
 export default function productReducer(state = initialState, action) {
   switch (action.type) {
     case productActionTypes.SET_ITEM_CHECKOUT_RATE:
-      console.log("Checkout: ", action.payload.productCheckoutRate);
+      console.log('Checkout: ', action.payload.productCheckoutRate);
       return {
         ...state,
-        checkoutRate: action.payload.productCheckoutRate,
+        checkoutRate: action.payload.productCheckoutRate
       };
     case productActionTypes.SET_ITEMS_IN_STOCK:
       return {
