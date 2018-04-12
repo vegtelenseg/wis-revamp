@@ -23,21 +23,21 @@ export default class Product extends React.Component {
       <Popup className="popup-container">
         <div className="popup">
           <span className="popup-item">
-            <strong>Name:</strong> {productName || item.productName}
+            <strong>Name:</strong> {item.productName}
           </span>
           <span className="popup-item">
-            <strong>Brand:</strong> {productBrand || item.productBrand}
+            <strong>Brand:</strong> {item.productBrand}
           </span>
           <span className="popup-item">
             <strong>In Stock:</strong>
-            {productQty || item.productQty}
+            {item.productQty}
           </span>
           <span className="popup-item">
             <strong>Price: </strong>R{price || item.price}
           </span>
           <span className="popup-item">
             <strong>Checkout Rate:</strong>
-            {productCheckoutRate || item.productCheckoutRate}
+            {item.productCheckoutRate}
           </span>
           <input
             type="submit"

@@ -15,10 +15,15 @@ export default class MapMarker extends React.Component {
       /*const svgIcon = window.L.icon({
         iconUrl: require('../../assets/marker.svg'),
       })*/
+      const inStock = item.productQty;
       return (
-        <Marker key={idx + Math.random()} position={position}>
+        <Marker key={idx + Math.random()} position={position} autoPan>
           <InfoWindow
-            item={item}
+            item={
+              changedItem && changedItem.productId === item.productId
+                ? changedItem
+                : item
+            }
             buttonText={item.isWatched ? 'unwatch' : 'watch'}
             numberOfWatchedItems={numberOfWatchedItems}
             changedItem={changedItem}
