@@ -8,9 +8,16 @@ import serviceUrls from '../../../services/servicesUrls';
 const socket = io.connect(serviceUrls.wistoreServer);
 
 export default class ExploreView extends React.Component {
+
+  constructor() {
+    super();
+    this.data = null;
+  }
   componentDidMount() {
     socket.on('product changed', data => {
-      this.props.setItemCheckoutRate(data);
+      console.log("Product changed: ", data);
+      this.props.setChangedItem(data);
+      this.data = data;
     });
   }
   render() {
@@ -18,7 +25,7 @@ export default class ExploreView extends React.Component {
     return (
       <div id="explore-tab">
         <SearchView activeTab="EXPLORE" />
-        <Map numberOfWatchedItems={numberOfWatchedItems} />
+        <Map numberOfWatchedItems={numberOfWatchedItems} changedData={this.data} />
       </div>
     );
   }

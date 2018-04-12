@@ -1,5 +1,6 @@
 import createAction from '../../../helpers/actionCreator';
 import { getProductByNameFromDB } from '../../../services/services';
+import { findIndex } from 'lodash';
 
 const initialState = {
   searchQuery: '',
@@ -10,7 +11,8 @@ const initialState = {
 const exploreActionTypes = {
   SET_EXPLORE_ITEM_NAME: 'SET_EXPLORE_ITEM_NAME',
   SET_EXPLORE_IS_FETCHING: 'SET_EXPLORE_IS_FETCHING',
-  SET_EXPLORE_FOUND_ITEMS: 'SET_EXPLORE_FOUND_ITEMS'
+  SET_EXPLORE_FOUND_ITEMS: 'SET_EXPLORE_FOUND_ITEMS',
+  SET_CHANGED_ITEM: 'SET_CHANGED_ITEM'
 };
 
 export const exploreActions = {
@@ -19,7 +21,9 @@ export const exploreActions = {
   setIsFetching: predicate =>
     createAction(exploreActionTypes.SET_EXPLORE_IS_FETCHING, predicate),
   setFoundProduct: product =>
-    createAction(exploreActionTypes.SET_EXPLORE_FOUND_ITEMS, product)
+    createAction(exploreActionTypes.SET_EXPLORE_FOUND_ITEMS, product),
+  setChangedItem: item => createAction(exploreActionTypes.SET_CHANGED_ITEM, item)
+
 };
 
 export const fetchExploreItemsThunk = name => (dispatch, getState) => {
@@ -50,6 +54,16 @@ export default function exploreReducer(state = initialState, action) {
         foundItems: action.payload,
         isFetchingItems: false
       };
+    case exploreActionTypes.SET_CHANGED_ITEM:
+      const { foundItems } = state;
+      const idx = findIndex(foundItems, { productId: action.payload.productId });
+      if (idx !== -1) {
+        foundItems[idx] = action.payload;
+      }
+      return {
+        ...state,
+        foundItems
+      }
     default:
       return state;
   }

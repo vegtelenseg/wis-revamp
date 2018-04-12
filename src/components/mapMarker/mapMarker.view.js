@@ -5,11 +5,11 @@ import InfoWindow from '../product/product.container';
 
 export default class MapMarker extends React.Component {
   render() {
-    const { foundItems, numberOfWatchedItems } = this.props;
-    return this.renderMarkers(foundItems, numberOfWatchedItems);
+    const { foundItems, numberOfWatchedItems, changedData } = this.props;
+    return this.renderMarkers(foundItems, numberOfWatchedItems, changedData);
   }
 
-  renderMarkers = (foundItems, numberOfWatchedItems) =>
+  renderMarkers = (foundItems, numberOfWatchedItems, changedData) =>
     foundItems.map((item, idx) => {
       const position = this.mutateLatLng(idx);
       /*const svgIcon = window.L.icon({
@@ -21,6 +21,7 @@ export default class MapMarker extends React.Component {
             item={item}
             buttonText={item.isWatched ? 'unwatch' : 'watch'}
             numberOfWatchedItems={numberOfWatchedItems}
+            changedData={changedData}
           />
         </Marker>
       );

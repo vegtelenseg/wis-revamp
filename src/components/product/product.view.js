@@ -10,8 +10,12 @@ export default class Product extends React.Component {
       else this.props.setUnWatchedAndUpdateWatchedItemsThunk(item);
     }
   };
+  componentWillReceiveProps(nextProps) {
+    console.log("Will receive props: ", nextProps);
+  }
   render() {
-    const { item, buttonText } = this.props;
+    const { item, buttonText, changedData } = this.props;
+    console.log("Will receive props: ", changedData);
     return (
       <Popup className="popup-container">
         <div className="popup">
@@ -22,13 +26,13 @@ export default class Product extends React.Component {
             <strong>Brand:</strong> {item.productBrand}
           </span>
           <span className="popup-item">
-            <strong>In Stock:</strong> {this.props.inStock || item.productQty}
+            <strong>In Stock:</strong> {changedData ? changedData.productQty : item.productQty}
           </span>
           <span className="popup-item">
-            <strong>Price: </strong>R{this.props.price || item.price}
+            <strong>Price: </strong>R{changedData ? changedData.price : item.price}
           </span>
           <span className="popup-item">
-            <strong>Checkout Rate:</strong> {this.props.checkoutRate || item.productCheckoutRate}
+            <strong>Checkout Rate:</strong> {changedData ? changedData.productCheckoutRate : item.productCheckoutRate}
           </span>
           <input
             type="submit"
