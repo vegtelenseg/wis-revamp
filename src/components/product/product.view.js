@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Popup } from 'react-leaflet';
-import io from 'socket.io-client';
-import serviceUrls from '../../services/servicesUrls';
-
-const socket = io.connect(serviceUrls.wistoreServer);
-console.log("Service Url: ", serviceUrls.wistoreServer);
 
 export default class Product extends React.Component {
   setWatchUnwatch = (item, buttonText) => {
@@ -15,12 +10,6 @@ export default class Product extends React.Component {
       else this.props.setUnWatchedAndUpdateWatchedItemsThunk(item);
     }
   };
-  componentDidMount() {
-    socket.on('product changed', data => {
-      console.log('Changes: ', data);
-      this.props.setItemCheckoutRate(data.productId);
-    });
-  }
   render() {
     const { item, buttonText } = this.props;
     return (
@@ -33,13 +22,13 @@ export default class Product extends React.Component {
             <strong>Brand:</strong> {item.productBrand}
           </span>
           <span className="popup-item">
-            <strong>In Stock:</strong> {item.productQty}
+            <strong>In Stock:</strong> {this.props.inStock || item.productQty}
           </span>
           <span className="popup-item">
-            <strong>Price: </strong>R{item.productCheckoutRate}
+            <strong>Price: </strong>R{this.props.price || item.price}
           </span>
           <span className="popup-item">
-            <strong>Checkout Rate:</strong> {item.productCheckoutRate}
+            <strong>Checkout Rate:</strong> {this.props.checkoutRate || item.productCheckoutRate}
           </span>
           <input
             type="submit"

@@ -5,5 +5,5 @@ const urlToUse = process.env.NODE_ENV === 'production' ? stagingBaseUrl : localB
 export default {
   mockDataUrl: './mock-data/products.json',
   tileLayerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  wistoreServer: `${urlToUse}/api/food`
+  wistoreServer: `${urlToUse}`
 };
