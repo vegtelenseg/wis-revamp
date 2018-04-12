@@ -4,17 +4,32 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
 import ExploreViewContainer from './explore/explore.container';
 import DiscountsViewContainer from './discounts/discounts.container';
 import WatchedViewContainer from './watched/watched.container';
+import io from 'socket.io-client';
+import serviceUrls from '../../services/servicesUrls';
+
+const socket = io.connect(serviceUrls.wistoreServer);
 
 export default class NavigationTabsView extends React.Component {
+  componentDidMount() {
+    socket.on('product changed', data => {
+      this.props.setChangedItem(data);
+    });
+  }
   render() {
-    const { numberOfWatchedItems } = this.props;
+    const { numberOfWatchedItems, changedItem } = this.props;
     return (
       <Tabs className="tabs-container">
         <TabContent for="exploreView">
-          <ExploreViewContainer numberOfWatchedItems={numberOfWatchedItems} />
+          <ExploreViewContainer
+            numberOfWatchedItems={numberOfWatchedItems}
+            changedItem={changedItem}
+          />
         </TabContent>
         <TabContent for="watchedView">
-          <WatchedViewContainer numberOfWatchedItems={numberOfWatchedItems} />
+          <WatchedViewContainer
+            numberOfWatchedItems={numberOfWatchedItems}
+            changedItem={changedItem}
+          />
         </TabContent>
         <TabContent for="discountsView">
           <DiscountsViewContainer />

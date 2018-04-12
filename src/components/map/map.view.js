@@ -15,7 +15,7 @@ export default class MapView extends Component {
       currentUserLocation,
       zoom,
       numberOfWatchedItems,
-      changedData
+      changedItem
     } = this.props;
     return (
       <Map center={currentUserLocation} zoom={zoom} zoomControl={false}>
@@ -25,7 +25,7 @@ export default class MapView extends Component {
             foundItems={foundItems}
             numberOfWatchedItems={numberOfWatchedItems}
             centerOfCircle={currentUserLocation}
-            changedData={changedData}
+            changedItem={changedItem}
           />
         }
       </Map>
