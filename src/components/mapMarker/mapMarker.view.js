@@ -8,18 +8,7 @@ export default class MapMarker extends React.Component {
     const { foundItems, numberOfWatchedItems } = this.props;
     return this.renderMarkers(foundItems, numberOfWatchedItems);
   }
-  mutateLatLng = idx => {
-    const { centerOfCircle } = this.props;
-    const centerX = centerOfCircle[0];
-    const centerY = centerOfCircle[1];
-    const deltaXPow = Math.pow(centerX, 2);
-    const deltaYPow = Math.pow(centerY, 2);
-    const dist = Math.sqrt(deltaXPow + deltaYPow);
-    const radius = dist / 4000;
-    const x = centerX - radius * Math.cos(idx);
-    const y = centerY - radius * Math.sin(idx);
-    return [x, y];
-  };
+
   renderMarkers = (foundItems, numberOfWatchedItems) =>
     foundItems.map((item, idx) => {
       const position = this.mutateLatLng(idx);
@@ -36,6 +25,18 @@ export default class MapMarker extends React.Component {
         </Marker>
       );
     });
+  mutateLatLng = idx => {
+    const { centerOfCircle } = this.props;
+    const centerX = centerOfCircle[0];
+    const centerY = centerOfCircle[1];
+    const deltaXPow = Math.pow(centerX, 2);
+    const deltaYPow = Math.pow(centerY, 2);
+    const dist = Math.sqrt(deltaXPow + deltaYPow);
+    const radius = dist / 4000;
+    const x = centerX - radius * Math.cos(idx);
+    const y = centerY - radius * Math.sin(idx);
+    return [x, y];
+  };
 }
 
 MapMarker.propType = {
