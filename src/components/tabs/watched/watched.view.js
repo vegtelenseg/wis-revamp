@@ -47,7 +47,7 @@ export default class WatchedView extends React.Component {
                     : watchedItem.productQty}
                 </li>
                 <li>
-                  <strong>In Stock: </strong>
+                  <strong>Price: </strong>
                   {productId === watchedItem.productId
                     ? price
                     : watchedItem.price}
