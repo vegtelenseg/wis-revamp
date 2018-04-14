@@ -17,14 +17,13 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "socket.io-client": "^2.1.0",
-    "thunk": "0.0.1",
-    "cross-env": "^5.1.4"
+    "thunk": "0.0.1"
   },
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm-run-all build-css build-js",
-    "start-js": "./node_modules/.bin/cross-env NODE_ENV=production react-scripts start",
-    "build-js": "./node_modules/.bin/cross-env NODE_ENV=production react-scripts build",
+    "start-js": "react-scripts start",
+    "build-js": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test-ci": "CI=true react-scripts test --env=jsdom --ci",
     "eject": "react-scripts eject",

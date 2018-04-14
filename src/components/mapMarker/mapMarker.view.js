@@ -15,7 +15,6 @@ export default class MapMarker extends React.Component {
       /*const svgIcon = window.L.icon({
         iconUrl: require('../../assets/marker.svg'),
       })*/
-      const inStock = item.productQty;
       return (
         <Marker key={idx + Math.random()} position={position} autoPan>
           <InfoWindow
