@@ -9,8 +9,14 @@ const inArray = function(collection, element) {
 };
 
 const itemExists = function(collection, element) {
-  if (!inArray(collection, element)) return false;
-  else return true;
+  if (
+    Array.isArray(collection) &&
+    collection.length > 0 &&
+    (element !== null || element !== undefined)
+  ) {
+    if (inArray(collection, element)) return true;
+    else return false;
+  } else return null;
 };
 
 export default itemExists;

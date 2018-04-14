@@ -1,6 +1,5 @@
 const stagingBaseUrl = 'https://wistore-server.herokuapp.com';
 const localBaseUrl = 'http://localhost:4300';
-console.log('Env: ', process.env.NODE_ENV);
 const urlToUse =
   process.env.NODE_ENV === 'production' ? stagingBaseUrl : localBaseUrl;
 export default {

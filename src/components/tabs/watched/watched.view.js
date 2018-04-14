@@ -47,6 +47,12 @@ export default class WatchedView extends React.Component {
                     : watchedItem.productQty}
                 </li>
                 <li>
+                  <strong>In Stock: </strong>
+                  {productId === watchedItem.productId
+                    ? price
+                    : watchedItem.price}
+                </li>
+                <li>
                   <strong>Checkout Rate: </strong>
                   {productId === watchedItem.productId
                     ? productCheckoutRate
@@ -77,7 +83,7 @@ export default class WatchedView extends React.Component {
             </div>
           ))
         ) : (
-          <div>No Watched Items</div>
+          <div className="no-watched">No Watched Items</div>
         )}
       </div>
     );

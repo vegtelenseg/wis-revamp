@@ -11,14 +11,7 @@ export default class Product extends React.Component {
     }
   };
   render() {
-    const { item, buttonText, changedItem } = this.props;
-    const {
-      productBrand,
-      productName,
-      productCheckoutRate,
-      price,
-      productQty
-    } = { ...changedItem };
+    const { item, buttonText } = this.props;
     return (
       <Popup className="popup-container">
         <div className="popup">
@@ -33,7 +26,7 @@ export default class Product extends React.Component {
             {item.productQty}
           </span>
           <span className="popup-item">
-            <strong>Price: </strong>R{price || item.price}
+            <strong>Price: </strong>R{item.price}
           </span>
           <span className="popup-item">
             <strong>Checkout Rate:</strong>
