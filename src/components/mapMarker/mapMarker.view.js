@@ -10,7 +10,7 @@ export default class MapMarker extends React.Component {
   }
 
   renderMarkers = (foundItems, numberOfWatchedItems, changedItem) =>
-    foundItems.map((item, idx) => {
+    foundItems.length && foundItems.map((item, idx) => {
       const position = this.mutateLatLng(idx);
       /*const svgIcon = window.L.icon({
         iconUrl: require('../../assets/marker.svg'),

@@ -75,16 +75,16 @@ export default class WatchedView extends React.Component {
               />
               <div className="traffic-lights-container">
                 <div className="traffic-lights">
-                  <span className="traffic-light red" />
-                  <span className="traffic-light yellow" />
-                  <span className="traffic-light green" />
+                  <span className={`traffic-light ${watchedItem.productQty < 15 && watchedItem.productCheckoutRate > 5 ? 'red' : ''}`} />
+                  <span className={`traffic-light ${watchedItem.productQty >= 25 && watchedItem.productQty < 65 && watchedItem.productCheckoutRate > 5 ? 'yellow' : ''}`} />
+                  <span className={`traffic-light ${watchedItem.productQty >= 65 && watchedItem.productCheckoutRate > 5 ? 'green' : ''}`} />
                 </div>
               </div>
             </div>
           ))
         ) : (
-          <div className="no-watched">No Watched Items</div>
-        )}
+            <div className="no-watched">No Watched Items</div>
+          )}
       </div>
     );
   }
