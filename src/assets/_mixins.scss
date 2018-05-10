@@ -1,5 +1,0 @@
-@mixin box-shadow($top, $left, $blur, $color: red, $inset: '') {
-  -webkit-box-shadow: $top $left $blur $color unquote($inset);
-  -moz-box-shadow: $top $left $blur $color unquote($inset);
-  box-shadow: $top $left $blur $color unquote($inset);
-}

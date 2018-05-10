@@ -1,0 +1,86 @@
+.watched-tab-panel {
+  margin-bottom: 5em;
+  .watched-item-container {
+    background: rgb(231, 219, 219);
+    position: relative;
+    margin: 0.4em;
+    border-radius: 0.3em;
+    &:before,
+    &:after {
+      position: absolute;
+      content: '';
+      top: 100px;
+      bottom: 5px;
+      left: 30px;
+      right: 30px;
+      z-index: -1;
+      box-shadow: 0 1px 80px 13px #aaaeb1;
+      border-radius: 100px/50px;
+    }
+    .watched-item {
+      padding-left: 2em;
+      padding-top: 1.3em;
+      list-style: none;
+    }
+    .button {
+      position: relative;
+      left: 2.6em;
+      transform: translateX(-8.5%);
+      margin: 0.5em 0;
+    }
+    .traffic-lights-container {
+      position: absolute;
+      right: 1em;
+      top: 93%;
+      transform: translateY(-93%);
+      .traffic-lights {
+        position: relative;
+        width: 100%;
+        span {
+          border: 1px solid black;
+          border-radius: 50px;
+          position: relative;
+          display: inline-block;
+          width: 0.5em;
+          height: 0.5em;
+          margin-right: 1em;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+        .red,
+        .yellow,
+        .green {
+          background-size: 5px 5px;
+          border-radius: 50%;
+          opacity: 1;
+        }
+        .red {
+          background: red;
+          background-image: radial-gradient(brown, transparent);
+          border: solid 1px brown;
+          box-shadow: 0 0 15px red inset;
+          animation: 5s red infinite;
+        }
+        .yellow {
+          background: yellow;
+          background-image: radial-gradient(orange, transparent);
+          border: solid 2px orange;
+          box-shadow: 0 0 15px yellow inset;
+          animation: 5s yellow infinite;
+        }
+        .green {
+          background: green;
+          background-image: radial-gradient(lime, transparent);
+          border: solid 2px lime;
+          box-shadow: 0 0 15px lime inset;
+          animation: 5s green infinite;
+        }
+      }
+    }
+  }
+  .no-watched {
+    display: flex;
+    justify-content: center;
+  }
+}

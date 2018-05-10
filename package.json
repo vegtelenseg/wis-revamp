@@ -16,6 +16,7 @@
     "react-tabs-redux": "^2.0.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "socket.io-client": "^2.1.0",
     "thunk": "0.0.1"
   },
   "scripts": {
@@ -26,7 +27,7 @@
     "test": "react-scripts test --env=jsdom",
     "test-ci": "CI=true react-scripts test --env=jsdom --ci",
     "eject": "react-scripts eject",
-    "build-css": "node-sass-chokidar src/ -o src/",
+    "build-css": "node-sass-chokidar src/ -o src/ --quiet",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "prettier": "prettier --write --tab-width=2 --single-quote=true \"src/**/*.{js,scss}\""

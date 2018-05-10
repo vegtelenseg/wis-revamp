@@ -1,0 +1,17 @@
+.popup-container {
+  font-family: 'Wis-Regular';
+  .popup {
+    &-item {
+      font-family: 'Wis-Light';
+      strong {
+        font-family: 'Wis-Semibold';
+      }
+    }
+  }
+  .watchBtn {
+    font-family: 'Wis-SemiBold';
+    text-transform: capitalize;
+    width: 100%;
+    padding: 0.23em 0;
+  }
+}

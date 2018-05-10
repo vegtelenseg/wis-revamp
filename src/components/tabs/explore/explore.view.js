@@ -5,10 +5,14 @@ import SearchView from '../../search/search.container';
 
 export default class ExploreView extends React.Component {
   render() {
+    const { numberOfWatchedItems, changedItem } = this.props;
     return (
       <div id="explore-tab">
         <SearchView activeTab="EXPLORE" />
-        <Map />
+        <Map
+          numberOfWatchedItems={numberOfWatchedItems}
+          changedItem={changedItem}
+        />
       </div>
     );
   }

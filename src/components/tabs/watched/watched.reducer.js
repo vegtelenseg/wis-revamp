@@ -1,7 +1,9 @@
-import _ from 'lodash';
+import { includes, filter } from 'lodash';
+
+import itemExists from '../../../helpers/arraysUtility';
 import createAction from '../../../helpers/actionCreator';
-import { getProductByNameFromDB } from '../../../services/services';
 import { navigationTabsActions } from '../navigationTabs.reducer';
+
 const initialState = {
   searchQuery: '',
   isFetchingItems: false,
@@ -32,31 +34,36 @@ export const watchedActions = {
 
 export const fetchWatchedItemsThunk = name => (dispatch, getState) => {
   const { watchedItems } = getState().watchedReducer;
-  const itemsMatching = _.filter(watchedItems, item =>
-    _.includes(item.productBrand.toLowerCase(), name.toLowerCase())
+  const itemsMatching = filter(watchedItems, item =>
+    includes(item.productBrand.toLowerCase(), name.toLowerCase())
   );
   dispatch(watchedActions.setFilteredWatchedItems(itemsMatching));
 };
 
-export const setAndUpdateWatchedItemsThunk = item => {
-  return (dispatch, getState) => {
-    const prevWatchedItems = getState().watchedReducer;
-    dispatch(watchedActions.setWatchedProduct(item));
-    const currentWatchedItems = getState().navigationTabsReducer;
-    if (
-      currentWatchedItems.numberOfWatchedItems <
-      prevWatchedItems.watchedItems.length
-    ) {
-      dispatch(navigationTabsActions.setNumberOfWatchedItems('INC'));
-    }
-    return;
-  };
+export const setAndUpdateWatchedItemsThunk = element => (
+  dispatch,
+  getState
+) => {
+  const { watchedItems } = getState().watchedReducer;
+  const itemIsWatched = itemExists(watchedItems, element);
+  if (!itemIsWatched) {
+    dispatch(watchedActions.setWatchedProduct(element));
+    const { numberOfWatchedItems } = getState().navigationTabsReducer;
+    if (numberOfWatchedItems < watchedItems.length)
+      dispatch(
+        navigationTabsActions.setNumberOfWatchedItems(watchedItems.length)
+      );
+  } else alert('Already Watching this item :)');
+  return;
 };
 
-export const setUnWatchedAndUpdateWatchedItemsThunk = item => {
-  return dispatch => {
-    dispatch(watchedActions.setUnWatchProduct(item));
-    dispatch(navigationTabsActions.setNumberOfWatchedItems('DEC'));
+export const setUnWatchedAndUpdateWatchedItemsThunk = element => {
+  return (dispatch, getState) => {
+    dispatch(watchedActions.setUnWatchProduct(element));
+    const { watchedItems } = getState().watchedReducer;
+    dispatch(
+      navigationTabsActions.setNumberOfWatchedItems(watchedItems.length)
+    );
     return;
   };
 };
@@ -76,12 +83,14 @@ export default function watchedReducer(state = initialState, action) {
       });
     case watchedActionTypes.SET_WATCHED_FOUND_ITEMS:
       const element = action.payload;
-      newState.watchedItems.pushIfNotExist(element, e => callback(e, element));
+      element.isWatched = true;
+      newState.watchedItems.push(element);
       return (newState = {
         ...newState,
         isFetchingItems: false
       });
     case watchedActionTypes.SET_WATCHED_UNWATCH_ITEM:
+      action.payload.isWatched = false;
       const newPayload = newState.watchedItems.filter(
         item => item !== action.payload
       );
@@ -99,22 +108,3 @@ export default function watchedReducer(state = initialState, action) {
       return state;
   }
 }
-
-const callback = (e, element) =>
-  e.productName === element.productName &&
-  e.productBrand === element.productBrand;
-
-Array.prototype.inArray = function(comparer) {
-  for (var i = 0; i < this.length; i++) {
-    if (comparer(this[i])) return true;
-  }
-  return false;
-};
-
-Array.prototype.pushIfNotExist = function(element, comparer) {
-  if (!this.inArray(comparer)) {
-    this.push(element);
-  } else {
-    alert('Already watching this item :)');
-  }
-};

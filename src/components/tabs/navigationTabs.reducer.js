@@ -1,34 +1,41 @@
-export const actionTypes = {
+import createAction from '../../helpers/actionCreator';
+
+export const navigationTabsActionTypes = {
   NAVIGATE_TO: 'NAVIGATE_TO',
-  SET_NUMBER_OF_WATCHED_ITEMS: 'SET_NUMBER_OF_WATCHED_ITEMS'
+  SET_NUMBER_OF_WATCHED_ITEMS: 'SET_NUMBER_OF_WATCHED_ITEMS',
+  SET_CHANGED_ITEM: 'SET_CHANGED_ITEM'
 };
 
 export const navigationTabsActions = {
-  setNumberOfWatchedItems: number => (dispatch, getState) => {
-    return dispatch({
-      type: actionTypes.SET_NUMBER_OF_WATCHED_ITEMS,
-      payload: number
-    });
-  }
+  setNumberOfWatchedItems: numberOfWatchedItems =>
+    createAction(
+      navigationTabsActionTypes.SET_NUMBER_OF_WATCHED_ITEMS,
+      numberOfWatchedItems
+    ),
+  setChangedItem: item =>
+    createAction(navigationTabsActionTypes.SET_CHANGED_ITEM, item)
 };
 
 const initialState = {
-  numberOfWatchedItems: 0
+  numberOfWatchedItems: 0,
+  changedItem: null
 };
 
 export default function navigationTabsReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.NAVIGATE_TO:
+    case navigationTabsActionTypes.NAVIGATE_TO:
       return {
         ...state
       };
-    case actionTypes.SET_NUMBER_OF_WATCHED_ITEMS:
+    case navigationTabsActionTypes.SET_NUMBER_OF_WATCHED_ITEMS:
       return {
         ...state,
-        numberOfWatchedItems:
-          action.payload === 'INC'
-            ? ++state.numberOfWatchedItems
-            : --state.numberOfWatchedItems
+        numberOfWatchedItems: action.payload
+      };
+    case navigationTabsActionTypes.SET_CHANGED_ITEM:
+      return {
+        ...state,
+        changedItem: action.payload
       };
     default:
       return state;

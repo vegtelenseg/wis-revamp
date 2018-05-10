@@ -12,9 +12,13 @@ import './assets/index.css';
 import App from './components/app/App';
 import rootReducer from './rootReducer';
 
+let middleware = [];
+if (process.env.NODE_ENV === 'development') {
+  middleware = [logger];
+}
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, logger))
+  composeWithDevTools(applyMiddleware(thunk, ...middleware))
 );
 
 ReactDOM.render(

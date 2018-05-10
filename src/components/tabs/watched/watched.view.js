@@ -7,8 +7,18 @@ export default class WatchedView extends React.Component {
     const {
       watchedItems,
       filteredWatchedItems,
-      setUnWatchedAndUpdateWatchedItemsThunk
+      setUnWatchedAndUpdateWatchedItemsThunk,
+      changedItem
     } = this.props;
+    const {
+      productBrand,
+      productName,
+      productCheckoutRate,
+      productId,
+      price,
+      productQty,
+      productBestBefore
+    } = { ...changedItem };
     const itemsToMap =
       filteredWatchedItems.length > 0 ? filteredWatchedItems : watchedItems;
     return (
@@ -20,23 +30,39 @@ export default class WatchedView extends React.Component {
               <ul className="watched-item">
                 <li>
                   <strong>Name: </strong>
-                  {watchedItem.productName}
+                  {productId === watchedItem.productId
+                    ? productName
+                    : watchedItem.productName}
                 </li>
                 <li>
                   <strong>Brand: </strong>
-                  {watchedItem.productBrand}
+                  {productId === watchedItem.productId
+                    ? productBrand
+                    : watchedItem.productBrand}
                 </li>
                 <li>
                   <strong>In Stock: </strong>
-                  {watchedItem.inStock}
+                  {productId === watchedItem.productId
+                    ? productQty
+                    : watchedItem.productQty}
+                </li>
+                <li>
+                  <strong>Price: </strong>
+                  {productId === watchedItem.productId
+                    ? price
+                    : watchedItem.price}
                 </li>
                 <li>
                   <strong>Checkout Rate: </strong>
-                  {watchedItem.checkoutRate}
+                  {productId === watchedItem.productId
+                    ? productCheckoutRate
+                    : watchedItem.productCheckoutRate}
                 </li>
                 <li>
                   <strong>Best Before: </strong>
-                  {watchedItem.bestBefore}
+                  {productId === watchedItem.productId
+                    ? productBestBefore
+                    : watchedItem.productBestBefore}
                 </li>
               </ul>
               <input
@@ -49,16 +75,16 @@ export default class WatchedView extends React.Component {
               />
               <div className="traffic-lights-container">
                 <div className="traffic-lights">
-                  <span className="traffic-light red" />
-                  <span className="traffic-light yellow" />
-                  <span className="traffic-light green" />
+                  <span className={`traffic-light ${watchedItem.productQty < 15 && watchedItem.productCheckoutRate > 5 ? 'red' : ''}`} />
+                  <span className={`traffic-light ${watchedItem.productQty >= 25 && watchedItem.productQty < 65 && watchedItem.productCheckoutRate > 5 ? 'yellow' : ''}`} />
+                  <span className={`traffic-light ${watchedItem.productQty >= 65 && watchedItem.productCheckoutRate > 5 ? 'green' : ''}`} />
                 </div>
               </div>
             </div>
           ))
         ) : (
-          <div>No Watched Items</div>
-        )}
+            <div className="no-watched">No Watched Items</div>
+          )}
       </div>
     );
   }
